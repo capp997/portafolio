@@ -69,6 +69,13 @@ function m($n){
 <script src="assets/mobile_premium.js"></script>
 <script src="assets/auto_refresh.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+    .then(() => console.log('SW registrado'))
+    .catch(err => console.error(err));
+}
+</script>
 </head>
 
 <body>

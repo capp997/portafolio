@@ -149,8 +149,6 @@ function money($n){
 
 <body>
 
-<div class="layout">
-
 <!--<aside class="sidebar">
     <div>
         <div class="brand">
@@ -310,7 +308,6 @@ function money($n){
 </section>
 
 </main>
-</div>
 
 </body>
 </html>
