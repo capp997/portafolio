@@ -1,0 +1,118 @@
+
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+margin:0;
+padding:0;
+}
+
+.advisor-wrap{
+padding:30px;
+max-width:1200px;
+margin:auto;
+}
+
+.advisor-hero{
+background:radial-gradient(circle at top right,rgba(168,85,247,.25),transparent 40%),#0b1220;
+border:1px solid #1e293b;
+border-radius:30px;
+padding:30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+gap:20px;
+}
+
+.advisor-hero p{
+color:#c084fc;
+font-weight:bold;
+}
+
+.advisor-hero h1{
+font-size:42px;
+margin:10px 0;
+}
+
+.advisor-hero span{
+color:#cbd5e1;
+}
+
+.advisor-btn,
+.advisor-back{
+background:#7c3aed;
+color:white;
+padding:14px 18px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+display:inline-flex;
+}
+
+.advisor-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-bottom:20px;
+}
+
+.advisor-card{
+background:#0b1220;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:24px;
+}
+
+.glow{
+box-shadow:0 0 30px rgba(168,85,247,.25);
+}
+
+.advisor-card span{
+display:block;
+color:#94a3b8;
+margin-bottom:10px;
+}
+
+.advisor-card h2{
+font-size:38px;
+margin:0;
+}
+
+.advisor-panel{
+background:#0b1220;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:24px;
+margin-bottom:18px;
+}
+
+.advisor-panel h3{
+margin-top:0;
+}
+
+.advisor-panel p,
+.advisor-panel li{
+color:#cbd5e1;
+}
+
+.advisor-success{
+background:#052e16;
+border:1px solid #22c55e;
+color:#86efac;
+padding:14px 18px;
+border-radius:16px;
+margin-bottom:18px;
+font-weight:bold;
+}
+
+@media(max-width:900px){
+.advisor-grid{
+grid-template-columns:1fr;
+}
+
+.advisor-hero{
+flex-direction:column;
+align-items:flex-start;
+}
+}
