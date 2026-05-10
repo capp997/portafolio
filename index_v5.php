@@ -65,6 +65,7 @@ function m($n){
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 <link rel="stylesheet" href="assets/pwa.css">
+<link rel="stylesheet" href="assets/menu_dropdown.css">
 <script src="assets/mobile_premium.js"></script>
 <script src="assets/auto_refresh.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -85,20 +86,55 @@ function m($n){
             </div>
         </div>
 
-        <nav>
-            <a class="active" href="index_v5.php">Dashboard</a>
-            <a href="pages/activos.php">Activos</a>
+        <nav class="premium-menu">
+
+    <a class="active" href="index_v5.php">🏠 Dashboard</a>
+    <a href="pages/activos.php">📊 Activos</a>
+
+    <div class="menu-group">
+        <button type="button" class="menu-parent">
+            <span>🔔 Alertas</span>
+            <span class="chevron">⌄</span>
+        </button>
+        <div class="submenu">
             <a href="pages/alertas.php">Alertas</a>
             <a href="pages/centro_alertas.php">Centro Alertas</a>
-            <a href="pages/compras.php">Compras</a>
+            <a href="pages/ai_insights.php">AI Insights</a>
+        </div>
+    </div>
+
+    <a href="pages/compras.php">🛒 Compras</a>
+
+    <div class="menu-group">
+        <button type="button" class="menu-parent">
+            <span>💰 Dividendos</span>
+            <span class="chevron">⌄</span>
+        </button>
+        <div class="submenu">
             <a href="pages/dividendos.php">Dividendos</a>
             <a href="pages/dividend_tracker.php">Dividend Tracker</a>
-            <a href="pages/rebalanceo.php">Rebalanceo</a>
-            <a href="pages/rutinas.php">Rutinas</a>
-            <a href="pages/metas.php">Metas</a>
+        </div>
+    </div>
+
+    <a href="pages/rebalanceo.php">⚖️ Rebalanceo</a>
+    <a href="pages/rutinas.php">🗓️ Rutinas</a>
+    <a href="pages/metas.php">🎯 Metas</a>
+
+    <div class="menu-group">
+        <button type="button" class="menu-parent">
+            <span>📈 Historial</span>
+            <span class="chevron">⌄</span>
+        </button>
+        <div class="submenu">
             <a href="pages/historial.php">Historial</a>
             <a href="pages/historial_avanzado.php">Historial Pro</a>
-        </nav>
+        </div>
+    </div>
+
+    <a href="pages/users.php">👤 Usuarios</a>
+
+</nav>
+
     </div>
 
     <div class="sidebar-footer">
@@ -361,5 +397,6 @@ new Chart(ctx, {
 });
 </script>
 <script src="assets/pwa.js"></script>
+<script src="assets/menu_dropdown.js"></script>
 </body>
 </html>
