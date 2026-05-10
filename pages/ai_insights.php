@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
+require_once __DIR__.'/../config/layout.php';
+page_start('AI Insights','ai_insights'); 
 
 $assets = $pdo->query("SELECT * FROM assets ORDER BY id ASC")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -149,7 +151,7 @@ function money($n){
 
 <div class="layout">
 
-<aside class="sidebar">
+<!--<aside class="sidebar">
     <div>
         <div class="brand">
             <div class="logo">🧠</div>
@@ -174,7 +176,7 @@ function money($n){
         <a class="update-btn" href="../api/update_prices.php?redirect=../pages/ai_insights.php">Actualizar precios</a>
         <a class="logout-btn" href="../api/logout.php">Cerrar sesión</a>
     </div>
-</aside>
+</aside>-->
 
 <main class="content">
 

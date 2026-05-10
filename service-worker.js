@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-v5-cache-v3';
+const CACHE_NAME = 'portfolio-v5-cache-v4';
 
 self.addEventListener('install', event => {
   self.skipWaiting();
@@ -31,4 +31,22 @@ self.addEventListener('fetch', event => {
       })
       .catch(() => caches.match(event.request))
   );
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('/index_v5.php')
+  );
+});
+
+self.addEventListener('message', event => {
+  if(event.data && event.data.type === 'SHOW_NOTIFICATION'){
+    self.registration.showNotification(event.data.title, {
+      body: event.data.body,
+      icon: '/assets/icons/icon-192.png',
+      badge: '/assets/icons/icon-192.png'
+    });
+  }
 });
