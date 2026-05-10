@@ -1,5 +1,0 @@
-<?php require_once __DIR__.'/../config/db.php'; require_once __DIR__.'/../config/layout.php'; page_start('Rebalanceo','rebalanceo'); $assets=$pdo->query("SELECT * FROM assets ORDER BY id")->fetchAll(PDO::FETCH_ASSOC); $total=0; foreach($assets as $a){$total+=$a['shares']*$a['current_price'];} ?>
-<section class="hero"><div><h1>Rebalanceo</h1><p>Compara tu % actual contra la meta ideal.</p></div></section><section class="panel"><table><thead><tr><th>Activo</th><th>% Actual</th><th>Meta %</th><th>Diferencia</th><th>Acción sugerida</th></tr></thead><tbody>
-<?php foreach($assets as $a):$v=$a['shares']*$a['current_price'];$pct=$total>0?$v/$total*100:0;$diff=$pct-$a['target_percent'];$act=$diff>3?'Reducir / no comprar':($diff<-3?'Comprar más':'Balanceado');?>
-<tr><td><b><?=$a['ticker']?></b></td><td><?=number_format($pct,1)?>%</td><td><?=$a['target_percent']?>%</td><td class="<?=$diff>0?'orange':'blue'?>"><?=number_format($diff,1)?>%</td><td><?=$act?></td></tr>
-<?php endforeach;?></tbody></table></section><?php page_end(); ?>

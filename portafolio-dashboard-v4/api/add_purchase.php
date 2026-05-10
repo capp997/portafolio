@@ -1,1 +1,0 @@
-<?php require_once __DIR__.'/../config/db.php'; $stmt=$pdo->prepare('INSERT INTO purchases(asset_id,buy_date,shares,buy_price,fee,note) VALUES(?,?,?,?,?,?)'); $stmt->execute([$_POST['asset_id'],$_POST['buy_date'],$_POST['shares'],$_POST['buy_price'],$_POST['fee']?:0,$_POST['note']??'']); header('Location: ../pages/compras.php'); exit; ?>
