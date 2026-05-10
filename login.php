@@ -30,11 +30,10 @@ $error = $_GET['error'] ?? '';
 
         <form action="api/login_secure.php" method="POST">
             <label>Usuario</label>
-            <input type="text" name="username" required placeholder="admin">
+            <input type="text" name="username" required placeholder="admin" autocomplete="username">
 
             <label>Contraseña</label>
-            <input type="password" name="password" required placeholder="Tu contraseña">
-
+            <input type="password" name="password" required placeholder="Tu contraseña" autocomplete="current-password">
             <button type="submit">Entrar</button>
         </form>
 
