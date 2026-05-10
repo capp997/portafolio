@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/db.php";
 require_once __DIR__ . "/../config/auth.php";
 
@@ -15,28 +16,14 @@ $users = $pdo->query("SELECT id,username,role,is_active,created_at FROM users OR
 <link rel="stylesheet" href="../assets/style_v5.css">
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/security.css">
+<link rel="stylesheet" href="../assets/menu_dropdown.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">👤</div>
-<div><h1>Usuarios</h1><p>Admin Panel</p></div>
-</div>
-<nav>
-<a href="../index_v5.php">Dashboard</a>
-<a class="active" href="users.php">Usuarios</a>
-<a href="ai_insights.php">AI Insights</a>
-<a href="centro_alertas.php">Centro Alertas</a>
-<a href="dividend_tracker.php">Dividend Tracker</a>
-</nav>
-</div>
-<div class="sidebar-footer">
-<a class="logout-btn" href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('users', '../'); ?>
 
 <main class="content">
 
@@ -110,5 +97,7 @@ $users = $pdo->query("SELECT id,username,role,is_active,created_at FROM users OR
 </main>
 </div>
 
+<script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>

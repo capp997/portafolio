@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/config/auth.php";
+require_once __DIR__ . "/config/menu.php";
 require_once __DIR__.'/config/db.php';
 
 $assets = $pdo->query("SELECT * FROM assets ORDER BY id")->fetchAll(PDO::FETCH_ASSOC);
@@ -82,77 +83,7 @@ if ('serviceWorker' in navigator) {
 
 <div class="layout">
 
-<aside class="sidebar">
-
-    <div>
-        <div class="brand">
-            <div class="logo">📈</div>
-            <div>
-                <h1>Portafolio V5</h1>
-                <p>Agresivo Controlado</p>
-            </div>
-        </div>
-
-        <nav class="premium-menu">
-
-    <a class="active" href="index_v5.php">🏠 Dashboard</a>
-    <a href="pages/activos.php">📊 Activos</a>
-
-    <div class="menu-group">
-        <button type="button" class="menu-parent">
-            <span>🔔 Alertas</span>
-            <span class="chevron">⌄</span>
-        </button>
-        <div class="submenu">
-            <a href="pages/alertas.php">Alertas</a>
-            <a href="pages/centro_alertas.php">Centro Alertas</a>
-            <a href="pages/ai_insights.php">AI Insights</a>
-        </div>
-    </div>
-
-    <a href="pages/compras.php">🛒 Compras</a>
-
-    <div class="menu-group">
-        <button type="button" class="menu-parent">
-            <span>💰 Dividendos</span>
-            <span class="chevron">⌄</span>
-        </button>
-        <div class="submenu">
-            <a href="pages/dividendos.php">Dividendos</a>
-            <a href="pages/dividend_tracker.php">Dividend Tracker</a>
-        </div>
-    </div>
-
-    <a href="pages/rebalanceo.php">⚖️ Rebalanceo</a>
-    <a href="pages/rutinas.php">🗓️ Rutinas</a>
-    <a href="pages/metas.php">🎯 Metas</a>
-
-    <div class="menu-group">
-        <button type="button" class="menu-parent">
-            <span>📈 Historial</span>
-            <span class="chevron">⌄</span>
-        </button>
-        <div class="submenu">
-            <a href="pages/historial.php">Historial</a>
-            <a href="pages/historial_avanzado.php">Historial Pro</a>
-        </div>
-    </div>
-
-    <a href="pages/users.php">👤 Usuarios</a>
-
-</nav>
-
-    </div>
-
-    <div class="sidebar-footer">
-        <a class="side-btn green" href="api/update_prices.php?redirect=../index_v5.php">📈 Actualizar precios</a>
-        <a class="side-btn blue" href="api/save_snapshot.php">💾 Guardar snapshot</a>
-        <a class="side-btn orange" href="api/scan_alerts.php">🔔 Escanear alertas</a>
-        <a class="side-btn green" href="api/smart_dividend_engine.php">💰 Dividend Engine</a>
-        <a class="side-btn red" href="api/logout.php">Cerrar sesión</a>
-    </div>
-
-</aside>
+<?php render_sidebar('dashboard', ''); ?>
 
 <main class="content">
     <button id="installAppBtn"

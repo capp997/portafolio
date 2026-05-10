@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -77,46 +78,15 @@ foreach($rows as $r){
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="../assets/action_buttons.css">
 <link rel="stylesheet" href="../assets/mobile_premium.css">
+<link rel="stylesheet" href="../assets/menu_dropdown.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
 </head>
 
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-    <div>
-        <div class="brand">
-            <div class="logo">💰</div>
-            <div>
-                <h1>Dividendos</h1>
-                <p>Income Tracker</p>
-            </div>
-        </div>
-
-        <nav>
-            <a class="" href="../index_v5.php">Dashboard</a>
-            <a class="" href="activos.php">Activos</a>
-            <a class="" href="alertas.php">Alertas</a>
-            <a class="" href="centro_alertas.php">Centro Alertas</a>
-            <a class="" href="compras.php">Compras</a>
-            <a class="" href="dividendos.php">Dividendos</a>
-            <a class="active" href="dividend_tracker.php">Dividend Tracker</a>
-            <a class="" href="rebalanceo.php">Rebalanceo</a>
-            <a class="" href="rutinas.php">Rutinas</a>
-            <a class="" href="metas.php">Metas</a>
-            <a class="" href="historial.php">Historial</a>
-            <a class="" href="historial_avanzado.php">Historial Pro</a>
-        </nav>
-    </div>
-
-    <div class="sidebar-footer">
-        <a class="side-btn green" href="../api/update_prices.php?redirect=../index_v5.php">📈 Actualizar precios</a>
-        <a class="side-btn blue" href="../api/save_snapshot.php">💾 Guardar snapshot</a>
-        <a class="side-btn orange" href="../api/scan_alerts.php">🔔 Escanear alertas</a>
-        <a class="side-btn green" href="../api/smart_dividend_engine.php">💰 Dividend Engine</a>
-        <a class="side-btn red" href="../api/logout.php">Cerrar sesión</a>
-    </div>
-</aside>
+<?php render_sidebar('dividend_tracker', '../'); ?>
 
 <main class="content">
 
@@ -258,5 +228,6 @@ new Chart(document.getElementById('dividendChart'), {
 </script>
 
 <script src="../assets/mobile_premium.js"></script>
+<script src="../assets/menu_dropdown.js"></script>
 </body>
 </html>

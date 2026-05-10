@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -27,31 +28,13 @@ function moneyFlex($n){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/market_data_engine.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">📡</div>
-<div><h1>Market Data</h1><p>Live Engine</p></div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="market_data.php">📡 Market Data</a>
-<a href="activos.php">Activos</a>
-<a href="centro_alertas.php">Centro Alertas</a>
-<a href="notifications.php">Notificaciones</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/market_data_engine.php">📡 Actualizar Market Data</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('market_data', '../'); ?>
 
 <main class="content">
 
@@ -106,5 +89,6 @@ function moneyFlex($n){
 </div>
 
 <script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>

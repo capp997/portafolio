@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -23,25 +24,12 @@ function nClass($type){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/notifications.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand"><div class="logo">🔔</div><div><h1>Notificaciones</h1><p>App Center</p></div></div>
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="notifications.php">🔔 Notificaciones <?= $unread>0 ? "($unread)" : "" ?></a>
-<a href="centro_alertas.php">Centro Alertas</a>
-<a href="dividend_tracker.php">Dividend Tracker</a>
-<a href="ai_insights.php">AI Insights</a>
-</nav>
-</div>
-<div class="sidebar-footer">
-<a href="../api/generate_notifications.php">Generar notificaciones</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('notifications', '../'); ?>
 
 <main class="content">
 <section class="notify-hero">
@@ -83,5 +71,6 @@ function nClass($type){
 </main>
 </div>
 <script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>

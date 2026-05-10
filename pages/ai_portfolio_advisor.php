@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -26,6 +27,9 @@ if(!$report){
 
 <link rel="stylesheet" href="../assets/style_v5.css">
 <link rel="stylesheet" href="../assets/ai_portfolio.css">
+<link rel="stylesheet" href="../assets/menu_dropdown.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 
@@ -91,5 +95,7 @@ Análisis generado correctamente ✅
 
 </div>
 
+<script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -66,27 +67,12 @@ function money($n){ return '$'.number_format((float)$n,2); }
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/advanced_analytics.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand"><div class="logo">📊</div><div><h1>Analytics</h1><p>Portfolio Lab</p></div></div>
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="advanced_analytics.php">📊 Advanced Analytics</a>
-<a href="market_data.php">📡 Market Data</a>
-<a href="ai_portfolio_advisor.php">🧠 AI Advisor</a>
-<a href="dividend_tracker.php">💰 Dividend Tracker</a>
-<a href="historial_avanzado.php">📈 Historial Pro</a>
-<a href="notifications.php">🔔 Notificaciones</a>
-</nav>
-</div>
-<div class="sidebar-footer">
-<a href="../api/market_data_engine.php?redirect=../pages/advanced_analytics.php">📡 Actualizar datos</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('advanced_analytics', '../'); ?>
 
 <main class="content">
 <section class="analytics-hero">
@@ -129,5 +115,6 @@ new Chart(document.getElementById('categoryChart'),{type:'bar',data:{labels:<?=j
 new Chart(document.getElementById('historyChart'),{type:'line',data:{labels:<?=json_encode($historyLabels)?>,datasets:[{label:'Valor total',data:<?=json_encode($historyValues)?>,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.12)',fill:true,tension:.35,borderWidth:3,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#fff'}}},scales:{x:{ticks:{color:'#94a3b8'},grid:{display:false}},y:{ticks:{color:'#94a3b8'},grid:{color:'rgba(148,163,184,.12)'}}}}});
 </script>
 <script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>

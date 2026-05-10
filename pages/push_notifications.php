@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -14,6 +15,9 @@ $subs = $pdo->query("SELECT * FROM push_subscriptions ORDER BY created_at DESC L
 <link rel="stylesheet" href="../assets/style_v5.css">
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/push_notifications.css">
+<link rel="stylesheet" href="../assets/menu_dropdown.css">
+<link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
+<link rel="stylesheet" href="../assets/mobile_premium.css">
 </head>
 <body>
 
@@ -65,5 +69,7 @@ $subs = $pdo->query("SELECT * FROM push_subscriptions ORDER BY created_at DESC L
 </div>
 
 <script src="../assets/push_notifications.js"></script>
+<script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_premium.js"></script>
 </body>
 </html>
