@@ -1,0 +1,217 @@
+/* ===== UNIFIED PREMIUM PAGES ===== */
+
+.content .hero{
+    background:#0b1220;
+    border:1px solid #1e293b;
+    border-radius:28px;
+    padding:26px;
+    margin-bottom:24px;
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    align-items:center;
+    box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+
+.content .hero h1{
+    font-size:30px;
+    margin:0 0 8px;
+}
+
+.content .hero p{
+    color:#94a3b8;
+    margin:0;
+}
+
+.content .pill{
+    background:#16a34a;
+    color:white;
+    padding:11px 17px;
+    border-radius:999px;
+    font-weight:bold;
+}
+
+.content .cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:18px;
+}
+
+.content .card{
+    background:#0b1220;
+    border:1px solid #1e293b;
+    border-radius:22px;
+    padding:22px;
+}
+
+.content .card span{
+    color:#94a3b8;
+    display:block;
+    margin-bottom:12px;
+}
+
+.content .card strong,
+.content .card h2,
+.content .card h3{
+    font-size:28px;
+}
+
+.content .panel{
+    background:#0b1220;
+    border:1px solid #1e293b;
+    border-radius:24px;
+    padding:22px;
+    margin-bottom:18px;
+}
+
+.content .panel h2{
+    margin-bottom:12px;
+}
+
+.content .grid,
+.content .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.content .table-wrap{
+    overflow:auto;
+}
+
+.content table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.content th{
+    text-align:left;
+    color:#94a3b8;
+    padding:14px 12px;
+    background:#020617;
+    font-size:13px;
+}
+
+.content td{
+    padding:16px 12px;
+    border-top:1px solid #1e293b;
+}
+
+.content input,
+.content select,
+.content textarea{
+    background:#020617;
+    border:1px solid #334155;
+    color:white;
+    border-radius:12px;
+    padding:10px;
+}
+
+.content button,
+.content .btn{
+    background:#16a34a;
+    color:white;
+    border:0;
+    padding:11px 14px;
+    border-radius:12px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.content .btn-gray{
+    background:#334155!important;
+    color:#e5e7eb!important;
+}
+
+.content .badge{
+    padding:7px 11px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.content .buy{
+    background:#052e16;
+    color:#86efac;
+}
+
+.content .sell{
+    background:#450a0a;
+    color:#fca5a5;
+}
+
+.content .hold{
+    background:#334155;
+    color:#e5e7eb;
+}
+
+.content small{
+    color:#94a3b8;
+}
+
+.content .form-row{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.content .section-title,
+.content .panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.content .goal-grid,
+.content .goals-wrapper{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-bottom:18px;
+}
+
+.content .goal-card,
+.content .goal-card-clean{
+    background:#0b1220;
+    border:1px solid #1e293b;
+    border-radius:24px;
+    padding:22px;
+}
+
+.content .progress-shell,
+.content .goal-progress-track{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.content .progress-fill,
+.content .goal-progress-bar{
+    background:#16a34a;
+}
+
+@media(max-width:1250px){
+    .content .cards{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:900px){
+    .content .cards,
+    .content .grid,
+    .content .grid2,
+    .content .goal-grid,
+    .content .goals-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .content .hero{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}

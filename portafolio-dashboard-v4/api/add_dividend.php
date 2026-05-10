@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/../config/db.php'; $stmt=$pdo->prepare('INSERT INTO dividends(asset_id,pay_date,amount,note) VALUES(?,?,?,?)'); $stmt->execute([$_POST['asset_id'],$_POST['pay_date'],$_POST['amount'],$_POST['note']??'']); header('Location: ../pages/dividendos.php'); exit; ?>

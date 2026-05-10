@@ -1,0 +1,96 @@
+/* ===== SIDEBAR PREMIUM ACTION BUTTONS FIX ===== */
+
+.sidebar-footer,
+.sidebar-actions{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+    margin-top:22px !important;
+}
+
+.sidebar-footer a,
+.sidebar-actions a{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    width:100% !important;
+    padding:13px 14px !important;
+    border-radius:14px !important;
+    text-decoration:none !important;
+    font-weight:700 !important;
+    font-size:14px !important;
+    border:1px solid transparent !important;
+    transition:.2s ease !important;
+    box-sizing:border-box !important;
+}
+
+.sidebar-footer a:hover,
+.sidebar-actions a:hover{
+    transform:translateY(-1px) !important;
+    filter:brightness(1.08) !important;
+}
+
+/* Botón verde */
+.sidebar-footer a[href*="update_prices"],
+.sidebar-actions a[href*="update_prices"]{
+    background:#16a34a !important;
+    color:white !important;
+    border-color:#16a34a !important;
+    box-shadow:0 10px 25px rgba(34,197,94,.16) !important;
+}
+
+/* Snapshot azul */
+.sidebar-footer a[href*="save_snapshot"],
+.sidebar-actions a[href*="save_snapshot"]{
+    background:#2563eb !important;
+    color:white !important;
+    border-color:#2563eb !important;
+}
+
+/* Alertas naranja */
+.sidebar-footer a[href*="scan_alerts"],
+.sidebar-actions a[href*="scan_alerts"]{
+    background:#f97316 !important;
+    color:white !important;
+    border-color:#f97316 !important;
+}
+
+/* Dividend Engine verde oscuro */
+.sidebar-footer a[href*="smart_dividend_engine"],
+.sidebar-actions a[href*="smart_dividend_engine"]{
+    background:#052e16 !important;
+    color:#86efac !important;
+    border-color:#16a34a !important;
+}
+
+/* Logout rojo */
+.sidebar-footer a[href*="logout"],
+.sidebar-actions a[href*="logout"]{
+    background:#dc2626 !important;
+    color:white !important;
+    border-color:#dc2626 !important;
+    margin-top:4px !important;
+}
+
+/* Evita que se vean como links subrayados */
+.sidebar-footer a:visited,
+.sidebar-actions a:visited{
+    color:inherit !important;
+}
+
+.sidebar nav a{
+    text-decoration:none !important;
+}
+
+/* Para sidebars largos */
+.sidebar{
+    overflow-y:auto !important;
+}
+
+@media(max-width:900px){
+    .sidebar-footer,
+    .sidebar-actions{
+        margin-bottom:80px !important;
+    }
+}
