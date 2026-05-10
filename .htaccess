@@ -1,0 +1,13 @@
+Options -Indexes
+
+<FilesMatch "\.(env|sql|bak|zip|log|ini)$">
+    Require all denied
+</FilesMatch>
+
+<Files "api.php">
+    Require all denied
+</Files>
+
+<FilesMatch "reset_.*\.php$">
+    Require all denied
+</FilesMatch>

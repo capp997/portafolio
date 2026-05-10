@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){const cards=document.querySelectorAll(".smart-alert-card:not(.reviewed)");if(cards.length>0){const popup=document.createElement("div");popup.className="smart-popup";popup.innerHTML="🔔 Tienes alertas activas para revisar";document.body.appendChild(popup);setTimeout(()=>popup.remove(),5000);}});

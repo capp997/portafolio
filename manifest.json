@@ -1,0 +1,21 @@
+{
+  "name": "Portafolio V5",
+  "short_name": "Portfolio",
+  "start_url": "/portafolio-dashboard-v4/index_v5.php",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+/* ===== AI INSIGHTS ===== */
+
+.ai-hero{
+    background:radial-gradient(circle at top right,rgba(34,197,94,.22),transparent 38%),
+               linear-gradient(135deg,#0b1220,#111827);
+    border:1px solid #1e293b;
+    border-radius:30px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    gap:22px;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.ai-label{
+    color:#86efac;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.ai-hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.ai-hero p{
+    color:#cbd5e1;
+}
+
+.risk-card{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:24px;
+    padding:22px;
+    min-width:270px;
+}
+
+.risk-card span,
+.risk-card small{
+    color:#94a3b8;
+    display:block;
+}
+
+.risk-card strong{
+    display:block;
+    font-size:28px;
+    margin:10px 0;
+}
+
+.risk-meter{
+    height:12px;
+    background:#1e293b;
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+
+.risk-meter div{
+    height:100%;
+    background:linear-gradient(90deg,#22c55e,#f97316,#ef4444);
+}
+
+.ai-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:18px;
+}
+
+.insight-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.insight-card,
+.risk-note{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:16px;
+    color:#dbeafe;
+}
+
+.risk-note{
+    border-color:#f97316;
+    color:#fed7aa;
+}
+
+.ai-watch-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.watch-card{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:16px;
+}
+
+.watch-card strong{
+    font-size:24px;
+    display:block;
+    margin-bottom:10px;
+}
+
+.watch-card p{
+    color:#cbd5e1;
+    margin-top:12px;
+}
+
+.buy-tag,
+.sell-tag{
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.buy-tag{
+    background:#052e16;
+    color:#86efac;
+}
+
+.sell-tag{
+    background:#450a0a;
+    color:#fca5a5;
+}
+
+.watch-empty{
+    grid-column:1/-1;
+    background:#020617;
+    border:1px dashed #334155;
+    border-radius:18px;
+    padding:24px;
+    text-align:center;
+    color:#94a3b8;
+}
+
+.allocation-ai-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.allocation-ai-grid div{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:16px;
+}
+
+.allocation-ai-grid span{
+    color:#94a3b8;
+    display:block;
+    margin-bottom:12px;
+}
+
+.ai-bar{
+    height:10px;
+    background:#1e293b;
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+
+.ai-bar div{
+    height:100%;
+    background:#22c55e;
+    border-radius:999px;
+}
+
+.orange-bar div{
+    background:#f97316;
+}
+
+.blue-bar div{
+    background:#3b82f6;
+}
+
+@media(max-width:1000px){
+    .ai-hero,
+    .ai-grid{
+        grid-template-columns:1fr;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .risk-card{
+        width:100%;
+    }
+
+    .ai-watch-grid,
+    .allocation-ai-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ai-hero h1{
+        font-size:32px;
+    }
+}

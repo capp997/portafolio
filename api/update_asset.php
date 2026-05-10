@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/../config/db.php'; $stmt=$pdo->prepare('UPDATE assets SET shares=?, avg_cost=?, current_price=?, base_price=?, target_percent=? WHERE id=?'); $stmt->execute([$_POST['shares'],$_POST['avg_cost'],$_POST['current_price'],$_POST['base_price'],$_POST['target_percent'],$_POST['id']]); header('Location: ../pages/activos.php'); exit; ?>

@@ -1,0 +1,11 @@
+.auto-sync-dividends{
+display:inline-flex;
+align-items:center;
+gap:8px;
+background:#16a34a;
+color:white;
+padding:12px 18px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+}

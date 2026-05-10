@@ -1,0 +1,76 @@
+/* ===== DIVIDEND TRACKER PREMIUM ===== */
+.dividend-hero{
+    background:radial-gradient(circle at top right,rgba(34,197,94,.24),transparent 35%),
+               linear-gradient(135deg,#0b1220,#052e16);
+    border:1px solid #1e293b;
+    border-radius:30px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    gap:22px;
+    align-items:center;
+    margin-bottom:22px;
+}
+.dividend-label{color:#86efac;font-weight:bold;margin-bottom:10px;}
+.dividend-hero h1{font-size:56px;margin-bottom:12px;}
+.dividend-sub{color:#cbd5e1;}
+.goal-card-income{
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:24px;
+    padding:22px;
+    min-width:260px;
+}
+.goal-card-income span,.goal-card-income small{display:block;color:#94a3b8;}
+.goal-card-income strong{display:block;margin:10px 0;font-size:30px;}
+.income-progress{
+    height:12px;
+    border-radius:999px;
+    background:#1e293b;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+.income-progress div{height:100%;background:#22c55e;border-radius:999px;}
+.div-chart-wrap{width:100%;height:320px;}
+.income-insights{display:flex;flex-direction:column;gap:14px;}
+.income-insights div{
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:16px;
+}
+.income-insights span{color:#94a3b8;display:block;margin-bottom:8px;}
+.income-insights strong{font-size:22px;color:#22c55e;}
+.income-insights p{color:#cbd5e1;margin-top:8px;}
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+.calendar-card{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:16px;
+}
+.calendar-card strong{font-size:22px;display:block;margin-bottom:8px;}
+.calendar-card span{display:block;color:#86efac;margin-bottom:6px;}
+.calendar-card small{color:#94a3b8;}
+.calendar-empty{
+    grid-column:1/-1;
+    background:#020617;
+    border:1px dashed #334155;
+    border-radius:18px;
+    padding:24px;
+    text-align:center;
+    color:#94a3b8;
+}
+@media(max-width:1000px){
+    .dividend-hero{flex-direction:column;align-items:flex-start;}
+    .dividend-hero h1{font-size:42px;}
+    .goal-card-income{width:100%;}
+    .calendar-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:700px){
+    .calendar-grid{grid-template-columns:1fr;}
+}
