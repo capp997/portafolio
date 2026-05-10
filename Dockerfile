@@ -10,6 +10,8 @@ RUN a2enmod rewrite
 
 COPY . /var/www/html/
 
+RUN ls -la /var/www/html/
+
 WORKDIR /var/www/html
 
 EXPOSE 80
