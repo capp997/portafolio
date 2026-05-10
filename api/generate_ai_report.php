@@ -9,7 +9,7 @@ $crypto = 0;
 $stocks = 0;
 
 foreach($assets as $a){
-    $value = ((float)$a['quantity']) * ((float)$a['current_price']);
+    $value = ((float)$a['shares']) * ((float)$a['current_price']);
     $totalValue += $value;
 
     $ticker = strtoupper($a['ticker']);
