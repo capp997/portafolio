@@ -1,13 +1,21 @@
 <?php
-$host = "localhost";
-$dbname = "portafolio_db";
-$user = "root";
-$password = "";
+
+$host = getenv("DB_HOST");
+$port = getenv("DB_PORT") ?: "5432";
+$dbname = getenv("DB_NAME") ?: "postgres";
+$user = getenv("DB_USER") ?: "postgres";
+$password = getenv("DB_PASS");
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $password);
+    $pdo = new PDO(
+        "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require",
+        $user,
+        $password
+    );
+
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
+
+} catch(PDOException $e) {
     die("Error DB: " . $e->getMessage());
 }
 ?>
