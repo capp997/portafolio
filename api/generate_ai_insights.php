@@ -1,0 +1,1 @@
+<?php echo 'AI insights generator'; ?>
