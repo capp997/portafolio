@@ -79,7 +79,18 @@ if(curl_errno($ch)){
 
 $data = json_decode($response, true);
 
-$message = $data['choices'][0]['message']['content'] ?? 'No response';
+if(isset($data['choices'][0]['message']['content'])){
+    $message = trim($data['choices'][0]['message']['content']);
+} else {
+
+    $message = "OpenAI Error:\n\n";
+
+    if(isset($data['error']['message'])){
+        $message .= $data['error']['message'];
+    } else {
+        $message .= json_encode($data, JSON_PRETTY_PRINT);
+    }
+}
 
 echo json_encode([
     "ok"=>true,
