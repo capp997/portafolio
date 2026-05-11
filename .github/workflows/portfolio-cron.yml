@@ -1,0 +1,15 @@
+name: Portfolio V5 Cron
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run-cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Portfolio Cron
+        run: |
+          curl -L "${{ secrets.PORTFOLIO_CRON_URL }}"
