@@ -148,34 +148,6 @@ function money($n){
 </head>
 
 <body>
-
-<!--<aside class="sidebar">
-    <div>
-        <div class="brand">
-            <div class="logo">🧠</div>
-            <div>
-                <h1>AI Insights</h1>
-                <p>Portfolio Brain</p>
-            </div>
-        </div>
-
-        <nav>
-            <a href="../index_v5.php">Dashboard</a>
-            <a href="activos.php">Activos</a>
-            <a href="centro_alertas.php">Centro Alertas</a>
-            <a href="dividend_tracker.php">Dividend Tracker</a>
-            <a href="historial_avanzado.php">Historial Pro</a>
-            <a class="active" href="ai_insights.php">AI Insights</a>
-            <a href="metas.php">Metas</a>
-        </nav>
-    </div>
-
-    <div class="sidebar-footer">
-        <a class="update-btn" href="../api/update_prices.php?redirect=../pages/ai_insights.php">Actualizar precios</a>
-        <a class="logout-btn" href="../api/logout.php">Cerrar sesión</a>
-    </div>
-</aside>-->
-
 <main class="content">
 
 <section class="ai-hero">
