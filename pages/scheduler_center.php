@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -22,37 +23,13 @@ $last = $runs[0] ?? null;
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/scheduler.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 
 <body>
 
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">⏰</div>
-<div>
-<h1>Scheduler</h1>
-<p>Auto Cron</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="scheduler_center.php">⏰ Scheduler</a>
-<a href="automation_center.php">⚙️ Automation</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-<a href="notifications.php">🔔 Notifications</a>
-<a href="market_data.php">📡 Market Data</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="automation_center.php">⚙️ Automation Center</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
+<?php render_sidebar('scheduler_center', '../'); ?>
 <main class="content">
 
 <section class="scheduler-hero">

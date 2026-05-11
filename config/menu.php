@@ -2,6 +2,13 @@
 function render_sidebar($active='dashboard', $base=''){
     // $base = '' for index_v5.php, '../' for files inside /pages
     $isAdmin = (($_SESSION['role'] ?? '') === 'admin');
+
+    $alertPages = ['alertas','centro_alertas','notifications','push_notifications','smart_signals','ai_insights'];
+    $tradePages = ['compras','sell'];
+    $dividendPages = ['dividendos','dividend_tracker'];
+    $analyticsPages = ['advanced_analytics','market_data','ai_portfolio_advisor','ai_finance_chat'];
+    $automationPages = ['automation_center','scheduler_center'];
+    $historyPages = ['historial','historial_avanzado'];
 ?>
 <aside class="sidebar">
     <div>
@@ -17,7 +24,18 @@ function render_sidebar($active='dashboard', $base=''){
             <a class="<?= $active=='dashboard'?'active':'' ?>" href="<?= $base ?>index_v5.php">🏠 Dashboard</a>
             <a class="<?= $active=='activos'?'active':'' ?>" href="<?= $base ?>pages/activos.php">📊 Activos</a>
 
-            <div class="menu-group <?= in_array($active, ['alertas','centro_alertas','notifications','push_notifications','ai_insights']) ? 'open' : '' ?>">
+            <div class="menu-group <?= in_array($active, $tradePages) ? 'open' : '' ?>">
+                <button type="button" class="menu-parent">
+                    <span>💼 Operaciones</span>
+                    <span class="chevron">⌄</span>
+                </button>
+                <div class="submenu">
+                    <a class="<?= $active=='compras'?'active':'' ?>" href="<?= $base ?>pages/compras.php">🛒 Compras</a>
+                    <a class="<?= $active=='sell'?'active':'' ?>" href="<?= $base ?>pages/sell.php">💸 Ventas</a>
+                </div>
+            </div>
+
+            <div class="menu-group <?= in_array($active, $alertPages) ? 'open' : '' ?>">
                 <button type="button" class="menu-parent">
                     <span>🔔 Alertas</span>
                     <span class="chevron">⌄</span>
@@ -27,13 +45,12 @@ function render_sidebar($active='dashboard', $base=''){
                     <a class="<?= $active=='centro_alertas'?'active':'' ?>" href="<?= $base ?>pages/centro_alertas.php">Centro Alertas</a>
                     <a class="<?= $active=='notifications'?'active':'' ?>" href="<?= $base ?>pages/notifications.php">Notificaciones</a>
                     <a class="<?= $active=='push_notifications'?'active':'' ?>" href="<?= $base ?>pages/push_notifications.php">Push Notifications</a>
+                    <a class="<?= $active=='smart_signals'?'active':'' ?>" href="<?= $base ?>pages/smart_signals.php">Smart Signals</a>
                     <a class="<?= $active=='ai_insights'?'active':'' ?>" href="<?= $base ?>pages/ai_insights.php">AI Insights</a>
                 </div>
             </div>
 
-            <a class="<?= $active=='compras'?'active':'' ?>" href="<?= $base ?>pages/compras.php">🛒 Compras</a>
-
-            <div class="menu-group <?= in_array($active, ['dividendos','dividend_tracker']) ? 'open' : '' ?>">
+            <div class="menu-group <?= in_array($active, $dividendPages) ? 'open' : '' ?>">
                 <button type="button" class="menu-parent">
                     <span>💰 Dividendos</span>
                     <span class="chevron">⌄</span>
@@ -44,19 +61,31 @@ function render_sidebar($active='dashboard', $base=''){
                 </div>
             </div>
 
-            <div class="menu-group <?= in_array($active, ['advanced_analytics','market_data','ai_portfolio_advisor']) ? 'open' : '' ?>">
+            <div class="menu-group <?= in_array($active, $analyticsPages) ? 'open' : '' ?>">
                 <button type="button" class="menu-parent">
-                    <span>📈 Analytics</span>
+                    <span>📊 Analytics</span>
                     <span class="chevron">⌄</span>
                 </button>
                 <div class="submenu">
                     <a class="<?= $active=='advanced_analytics'?'active':'' ?>" href="<?= $base ?>pages/advanced_analytics.php">Advanced Analytics</a>
                     <a class="<?= $active=='market_data'?'active':'' ?>" href="<?= $base ?>pages/market_data.php">Market Data</a>
                     <a class="<?= $active=='ai_portfolio_advisor'?'active':'' ?>" href="<?= $base ?>pages/ai_portfolio_advisor.php">AI Portfolio Advisor</a>
+                    <a class="<?= $active=='ai_finance_chat'?'active':'' ?>" href="<?= $base ?>pages/ai_finance_chat.php">AI Finance Chat</a>
                 </div>
             </div>
 
-            <div class="menu-group <?= in_array($active, ['historial','historial_avanzado']) ? 'open' : '' ?>">
+            <div class="menu-group <?= in_array($active, $automationPages) ? 'open' : '' ?>">
+                <button type="button" class="menu-parent">
+                    <span>⚙️ Automation</span>
+                    <span class="chevron">⌄</span>
+                </button>
+                <div class="submenu">
+                    <a class="<?= $active=='automation_center'?'active':'' ?>" href="<?= $base ?>pages/automation_center.php">Automation Center</a>
+                    <a class="<?= $active=='scheduler_center'?'active':'' ?>" href="<?= $base ?>pages/scheduler_center.php">Scheduler / Cron</a>
+                </div>
+            </div>
+
+            <div class="menu-group <?= in_array($active, $historyPages) ? 'open' : '' ?>">
                 <button type="button" class="menu-parent">
                     <span>📚 Historial</span>
                     <span class="chevron">⌄</span>
@@ -70,6 +99,7 @@ function render_sidebar($active='dashboard', $base=''){
             <a class="<?= $active=='rebalanceo'?'active':'' ?>" href="<?= $base ?>pages/rebalanceo.php">⚖️ Rebalanceo</a>
             <a class="<?= $active=='rutinas'?'active':'' ?>" href="<?= $base ?>pages/rutinas.php">🗓️ Rutinas</a>
             <a class="<?= $active=='metas'?'active':'' ?>" href="<?= $base ?>pages/metas.php">🎯 Metas</a>
+
             <?php if($isAdmin): ?>
             <a class="<?= $active=='users'?'active':'' ?>" href="<?= $base ?>pages/users.php">👤 Usuarios</a>
             <?php endif; ?>

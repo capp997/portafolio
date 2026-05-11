@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 ?>
 <!DOCTYPE html>
@@ -12,35 +13,13 @@ require_once __DIR__ . "/../config/auth.php";
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/openai_chat.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">🧠</div>
-<div>
-<h1>AI Finance</h1>
-<p>OpenAI Layer</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="ai_finance_chat.php">🧠 AI Finance Chat</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-<a href="advanced_analytics.php">📊 Analytics</a>
-<a href="automation_center.php">⚙️ Automation</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
+<?php render_sidebar('ai_finance_chat', '../'); ?>
 <main class="content">
 
 <section class="ai-hero">

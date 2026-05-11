@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -20,38 +21,14 @@ LIMIT 50
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/automation_layer.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">⚙️</div>
-<div>
-<h1>Automation</h1>
-<p>AI Layer</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="automation_center.php">⚙️ Automation Center</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-<a href="notifications.php">🔔 Notifications</a>
-<a href="advanced_analytics.php">📊 Analytics</a>
-<a href="ai_portfolio_advisor.php">🧠 AI Advisor</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/run_automation_layer.php">▶ Ejecutar automatización</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
+<?php render_sidebar('automation_center', '../'); ?>
 <main class="content">
 
 <section class="automation-hero">

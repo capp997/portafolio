@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -40,39 +41,14 @@ function numberFlex($n){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/sell.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">💸</div>
-<div>
-<h1>Sell</h1>
-<p>Realized P/L</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a href="activos.php">📊 Activos</a>
-<a href="compras.php">🛒 Compras</a>
-<a class="active" href="sell.php">💸 Vender</a>
-<a href="advanced_analytics.php">📊 Analytics</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-<a href="notifications.php">🔔 Notificaciones</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/market_data_engine.php?redirect=../pages/sell.php">📡 Actualizar precios</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
+<?php render_sidebar('sell', '../'); ?>
 <main class="content">
 
 <section class="sell-hero">

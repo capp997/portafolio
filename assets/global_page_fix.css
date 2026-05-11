@@ -1,0 +1,19 @@
+/* ===== GLOBAL VISUAL CONSISTENCY FIX ===== */
+body { background:#020617; }
+.layout { min-height:100vh; }
+.content { width:100%; overflow-x:hidden; }
+.panel, .card, .analytics-card, .advisor-card, .sell-panel, .push-panel, .scheduler-card {
+  box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+input, select, textarea, button { font-family:inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.table-wrap table { min-width: 760px; }
+.cards-grid, .analytics-cards { align-items:stretch; }
+.green { color:#22c55e !important; }
+.red { color:#ef4444 !important; }
+.orange { color:#f97316 !important; }
+@media(max-width:900px){
+  .content { padding:14px !important; }
+  .cards-grid, .analytics-cards, .scheduler-grid, .sell-grid, .analytics-grid { grid-template-columns:1fr !important; }
+  h1 { font-size: clamp(28px, 8vw, 42px) !important; }
+}

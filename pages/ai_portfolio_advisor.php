@@ -30,9 +30,12 @@ if(!$report){
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
 <link rel="stylesheet" href="../assets/mobile_premium.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 <body>
-
+<div class="layout">
+<?php render_sidebar('ai_portfolio_advisor', '../'); ?>
+<main class="content">
 <div class="advisor-wrap">
 
 <section class="advisor-hero">
@@ -97,5 +100,8 @@ Análisis generado correctamente ✅
 
 <script src="../assets/menu_dropdown.js"></script>
 <script src="../assets/mobile_premium.js"></script>
+</main>
+</div>
+<script src="../assets/menu_dropdown.js"></script>
 </body>
 </html>

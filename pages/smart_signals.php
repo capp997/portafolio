@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -32,35 +33,13 @@ function signalClass($s){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/smart_signals.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 
 <body>
 
 <div class="layout">
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">🤖</div>
-<div><h1>Signals</h1><p>Smart Engine</p></div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="smart_signals.php">🤖 Smart Signals</a>
-<a href="advanced_analytics.php">📊 Advanced Analytics</a>
-<a href="market_data.php">📡 Market Data</a>
-<a href="ai_portfolio_advisor.php">🧠 AI Advisor</a>
-<a href="notifications.php">🔔 Notificaciones</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/generate_smart_signals.php">🤖 Generar señales</a>
-<a href="../api/market_data_engine.php?redirect=../pages/smart_signals.php">📡 Actualizar precios</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
+<?php render_sidebar('smart_signals', '../'); ?>
 <main class="content">
 
 <section class="signals-hero">

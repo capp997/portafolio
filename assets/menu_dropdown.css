@@ -13,3 +13,18 @@
 .sidebar-footer{border-top:1px solid #1e293b;padding-top:14px;margin-top:22px;}
 .sidebar{overflow-y:auto;}
 @media(max-width:900px){.submenu{margin-left:8px}.premium-menu{margin-top:20px}}
+
+
+/* ===== FULL MENU & PAGE CSS FIX ===== */
+.premium-menu { padding-bottom: 12px; }
+.menu-parent span:first-child { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.submenu a { justify-content:flex-start !important; }
+.sidebar { min-width: 270px; max-width: 310px; }
+.content { min-width: 0; }
+.table-wrap { overflow-x:auto; }
+.panel, .card, .analytics-panel, .sell-panel, .advisor-panel, .push-panel { box-sizing:border-box; }
+@media(max-width:900px){
+  .sidebar { max-width:none; min-width:0; }
+  .premium-menu a, .menu-parent { font-size:14px; }
+  .submenu { margin-left:8px; padding-left:8px; }
+}

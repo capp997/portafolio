@@ -77,6 +77,7 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.error(err));
 }
 </script>
+<link rel="stylesheet" href="assets/global_page_fix.css">
 </head>
 
 <body>

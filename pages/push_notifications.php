@@ -18,9 +18,12 @@ $subs = $pdo->query("SELECT * FROM push_subscriptions ORDER BY created_at DESC L
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
 <link rel="stylesheet" href="../assets/mobile_premium.css">
+<link rel="stylesheet" href="../assets/global_page_fix.css">
 </head>
 <body>
-
+<div class="layout">
+<?php render_sidebar('push_notifications', '../'); ?>
+<main class="content">
 <div class="push-wrap">
 
 <section class="push-hero">
@@ -71,5 +74,8 @@ $subs = $pdo->query("SELECT * FROM push_subscriptions ORDER BY created_at DESC L
 <script src="../assets/push_notifications.js"></script>
 <script src="../assets/menu_dropdown.js"></script>
 <script src="../assets/mobile_premium.js"></script>
+</main>
+</div>
+<script src="../assets/menu_dropdown.js"></script>
 </body>
 </html>
