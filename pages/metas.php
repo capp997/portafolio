@@ -1,59 +1,32 @@
 <?php
 require_once __DIR__.'/../config/db.php';
 require_once __DIR__.'/../config/layout.php';
-
 page_start('Metas','metas');
-
-$goals = $pdo->query("SELECT * FROM goals ORDER BY id")->fetchAll(PDO::FETCH_ASSOC);
-$totalPortfolio = $pdo->query("SELECT COALESCE(SUM(shares * current_price),0) FROM assets")->fetchColumn();
-$totalDividends = $pdo->query("SELECT COALESCE(SUM(amount),0) FROM dividends")->fetchColumn();
-
-function money($n){
-    return '$'.number_format((float)$n,2);
-}
-
-function progressColorClass($pct){
-    if ($pct >= 75) return "goal-progress-high";
-    if ($pct >= 40) return "goal-progress-mid";
-    return "goal-progress-low";
-}
+$rows=$pdo->query("SELECT * FROM goals ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+function m($n){return '$'.number_format((float)$n,2);} 
+function pct($current,$target){return $target>0?min(100,($current/$target)*100):0;}
+$totalCurrent = 0; $totalTarget = 0;
+foreach($rows as $r){ $totalCurrent += (float)$r['current_amount']; $totalTarget += (float)$r['target_amount']; }
+$globalPct = pct($totalCurrent,$totalTarget);
 ?>
 
-<section class="hero">
+<section class="metas-hero">
     <div>
+        <p>Goal Center</p>
         <h1>Metas Financieras</h1>
-        <p>Controla tu progreso para vivir cómodamente del portafolio.</p>
-    </div>
-    <div class="pill">Progreso visual</div>
-</section>
-
-<section class="cards">
-    <div class="card">
-        <span>Valor actual del portafolio</span>
-        <strong><?= money($totalPortfolio) ?></strong>
+        <span>Controla objetivos, progreso, fechas y faltante de cada meta.</span>
     </div>
 
-    <div class="card">
-        <span>Dividendos acumulados</span>
-        <strong class="green"><?= money($totalDividends) ?></strong>
-    </div>
-
-    <div class="card">
-        <span>Metas activas</span>
-        <strong><?= count($goals) ?></strong>
-    </div>
-
-    <div class="card">
-        <span>Estado</span>
-        <strong class="green">Activo</strong>
+    <div class="metas-score">
+        <span>Progreso total</span>
+        <strong><?=number_format($globalPct,1)?>%</strong>
     </div>
 </section>
 
-<section class="panel">
+<section class="metas-form-panel">
     <h2>Agregar nueva meta</h2>
-
-    <form action="../api/add_goal.php" method="POST" class="goal-add-form">
-        <input name="title" placeholder="Nombre de la meta" required>
+    <form action="../api/add_goal.php" method="POST" class="metas-add-form">
+        <input type="text" name="title" placeholder="Nombre de la meta" required>
         <input type="number" step="0.01" name="target_amount" placeholder="Objetivo $" required>
         <input type="number" step="0.01" name="current_amount" placeholder="Actual $" value="0">
         <input type="date" name="deadline">
@@ -61,98 +34,52 @@ function progressColorClass($pct){
     </form>
 </section>
 
-<section class="goals-wrapper">
-<?php foreach($goals as $g):
-    $target = (float)$g['target_amount'];
-    $current = (float)$g['current_amount'];
-    $pct = $target > 0 ? min(100, ($current / $target) * 100) : 0;
-    $remaining = max(0, $target - $current);
-    $progressClass = progressColorClass($pct);
+<section class="metas-grid">
+<?php foreach($rows as $r):
+    $p = pct((float)$r['current_amount'], (float)$r['target_amount']);
+    $missing = max(0, (float)$r['target_amount'] - (float)$r['current_amount']);
 ?>
-    <article class="goal-card-clean">
-        <form action="../api/update_goal.php" method="POST">
-            <input type="hidden" name="id" value="<?= $g['id'] ?>">
-
-            <div class="goal-header-clean">
-                <div class="goal-title-box">
-                    <label>Meta</label>
-                    <input name="title" value="<?= htmlspecialchars($g['title']) ?>">
-                </div>
-
-                <div class="goal-percent-box">
-                    <?= number_format($pct,1) ?>%
-                </div>
+    <article class="meta-card">
+        <div class="meta-top">
+            <div>
+                <span>Meta</span>
+                <h2><?=htmlspecialchars($r['title'])?></h2>
             </div>
+            <b><?=number_format($p,1)?>%</b>
+        </div>
 
-            <div class="goal-progress-track">
-                <div class="goal-progress-bar <?= $progressClass ?>" style="width: <?= $pct ?>%;"></div>
-            </div>
+        <div class="progress-line">
+            <span style="width:<?=$p?>%"></span>
+        </div>
 
-            <div class="goal-money-grid">
-                <div>
-                    <span>Actual</span>
-                    <strong><?= money($current) ?></strong>
-                </div>
+        <div class="meta-numbers">
+            <div><span>Actual</span><strong class="green"><?=m($r['current_amount'])?></strong></div>
+            <div><span>Objetivo</span><strong><?=m($r['target_amount'])?></strong></div>
+            <div><span>Falta</span><strong class="orange"><?=m($missing)?></strong></div>
+            <div><span>Fecha</span><strong><?= $r['deadline'] ? date('m/d/Y', strtotime($r['deadline'])) : 'Sin fecha' ?></strong></div>
+        </div>
 
-                <div>
-                    <span>Objetivo</span>
-                    <strong><?= money($target) ?></strong>
-                </div>
-
-                <div>
-                    <span>Falta</span>
-                    <strong class="<?= $remaining > 0 ? 'orange' : 'green' ?>"><?= money($remaining) ?></strong>
-                </div>
-            </div>
-
-            <div class="goal-edit-grid">
-                <div>
-                    <label>Actual $</label>
-                    <input type="number" step="0.01" name="current_amount" value="<?= $g['current_amount'] ?>">
-                </div>
-
-                <div>
-                    <label>Objetivo $</label>
-                    <input type="number" step="0.01" name="target_amount" value="<?= $g['target_amount'] ?>">
-                </div>
-
-                <div>
-                    <label>Fecha</label>
-                    <input type="date" name="deadline" value="<?= $g['deadline'] ?>">
-                </div>
-            </div>
-
-            <div class="goal-buttons">
-                <button>Guardar</button>
+        <form action="../api/update_goal.php" method="POST" class="meta-edit-form">
+            <input type="hidden" name="id" value="<?=$r['id']?>">
+            <label>Actual $</label>
+            <input type="number" step="0.01" name="current_amount" value="<?=$r['current_amount']?>">
+            <label>Objetivo $</label>
+            <input type="number" step="0.01" name="target_amount" value="<?=$r['target_amount']?>">
+            <label>Fecha</label>
+            <input type="date" name="deadline" value="<?=$r['deadline']?>">
+            <button>Guardar</button>
         </form>
 
-                <form action="../api/delete_goal.php" method="POST" onsubmit="return confirm('¿Eliminar esta meta?')">
-                    <input type="hidden" name="id" value="<?= $g['id'] ?>">
-                    <button class="btn-gray">Eliminar</button>
-                </form>
-            </div>
+        <form action="../api/delete_goal.php" method="POST" onsubmit="return confirm('¿Eliminar esta meta?')">
+            <input type="hidden" name="id" value="<?=$r['id']?>">
+            <button class="btn-gray danger-btn">Eliminar</button>
+        </form>
     </article>
 <?php endforeach; ?>
-</section>
 
-<section class="grid2">
-    <div class="panel">
-        <h2>Cómo usarlo</h2>
-        <ul>
-            <li>Para metas de capital, copia el valor del portafolio en “Actual”.</li>
-            <li>Para metas de dividendos, copia dividendos acumulados en “Actual”.</li>
-            <li>Presiona Guardar y la barra se actualiza.</li>
-        </ul>
-    </div>
-
-    <div class="panel">
-        <h2>Lectura rápida</h2>
-        <ul>
-            <li>0% - 39%: empezando.</li>
-            <li>40% - 74%: buen avance.</li>
-            <li>75% - 100%: cerca de completar.</li>
-        </ul>
-    </div>
+<?php if(count($rows)===0): ?>
+    <div class="empty-metas">No hay metas todavía. Agrega la primera arriba.</div>
+<?php endif; ?>
 </section>
 
 <?php page_end(); ?>
