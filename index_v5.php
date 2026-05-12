@@ -2,7 +2,6 @@
 require_once __DIR__ . "/config/auth.php";
 require_once __DIR__ . "/config/menu.php";
 require_once __DIR__.'/config/db.php';
-include __DIR__ . "/components/ai_dashboard_cards.php";
 
 $assets = $pdo->query("SELECT * FROM assets ORDER BY id")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -69,6 +68,7 @@ function m($n){
 <link rel="stylesheet" href="assets/pwa.css">
 <link rel="stylesheet" href="assets/menu_dropdown.css">
 <link rel="stylesheet" href="assets/ai_dashboard_cards.css">
+<link rel="stylesheet" href="assets/dashboard_premium_ui.css">
 <script src="assets/mobile_premium.js"></script>
 <script src="assets/auto_refresh.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -140,7 +140,7 @@ if ('serviceWorker' in navigator) {
 
     </div>
 </section>
-
+<?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
 <section class="cards-grid">
 
     <div class="card premium-glow">
