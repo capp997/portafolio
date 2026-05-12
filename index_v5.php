@@ -139,46 +139,8 @@ if ('serviceWorker' in navigator) {
     </div>
 </section>
 
-<!--<section class="quick-actions-panel">
-    <h2>Acciones rápidas</h2>
-    <p>Ejecuta funciones principales del sistema con un clic.</p>
-
-    <div class="action-bar">
-
-        <a class="action-btn green"
-        href="api/update_prices.php?redirect=../index_v5.php">
-        📈 Actualizar precios
-        </a>
-
-        <a class="action-btn blue"
-        href="api/save_snapshot.php">
-        💾 Guardar snapshot
-        </a>
-
-        <a class="action-btn orange"
-        href="api/scan_alerts.php">
-        🔔 Escanear alertas
-        </a>
-
-        <a class="action-btn green"
-        href="api/smart_dividend_engine.php">
-        💰 Smart Dividend Engine
-        </a>
-
-        <a class="action-btn dark"
-        href="pages/dividend_tracker.php">
-        📅 Dividend Tracker
-        </a>
-
-        <a class="action-btn dark"
-        href="pages/centro_alertas.php">
-        🚨 Centro Alertas
-        </a>
-
-    </div>
-</section>-->
-<?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
 <?php include __DIR__ . "/components/live_market_mini.php"; ?>
+<?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
 <section class="cards-grid">
 
     <div class="card premium-glow">

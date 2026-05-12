@@ -1,0 +1,135 @@
+/* LIVE CHARTS FIX */
+
+.fixed-hero{
+    margin-bottom:16px !important;
+}
+
+.ticker-tape-panel{
+    background:linear-gradient(180deg,#0f172a,#0b1220);
+    border:1px solid #26344f;
+    border-radius:22px;
+    padding:8px 12px;
+    margin-bottom:18px;
+    min-height:68px;
+    overflow:hidden;
+    box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+
+.fixed-charts-layout{
+    align-items:stretch;
+}
+
+.fixed-watchlist{
+    max-height:760px;
+    overflow:hidden;
+}
+
+.fixed-watchlist .watchlist{
+    max-height:680px;
+    overflow-y:auto;
+    padding-right:6px;
+}
+
+.fixed-chart-panel{
+    min-height:760px;
+}
+
+.tv-chart-box{
+    height:680px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#020617;
+    border:1px solid #1e293b;
+}
+
+#tradingview_chart{
+    height:100% !important;
+    min-height:680px !important;
+}
+
+.market-widgets-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.market-widget-card{
+    background:linear-gradient(180deg,#0f172a,#0b1220);
+    border:1px solid #26344f;
+    border-radius:26px;
+    padding:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.26);
+    overflow:hidden;
+    min-height:500px;
+}
+
+.widget-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:14px;
+}
+
+.widget-title h2{
+    margin:0 0 6px;
+    font-size:24px;
+}
+
+.widget-title p{
+    margin:0;
+    color:#94a3b8;
+}
+
+.fixed-symbol-overview,
+.fixed-technical{
+    min-height:420px;
+}
+
+.fixed-symbol-overview .tradingview-widget-container__widget,
+.fixed-technical .tradingview-widget-container__widget{
+    min-height:420px;
+}
+
+@media(max-width:1200px){
+    .market-widgets-grid{
+        grid-template-columns:1fr;
+    }
+
+    .fixed-chart-panel{
+        min-height:auto;
+    }
+
+    .tv-chart-box{
+        height:620px;
+    }
+
+    #tradingview_chart{
+        min-height:620px !important;
+    }
+}
+
+@media(max-width:700px){
+    .ticker-tape-panel{
+        border-radius:18px;
+        padding:6px;
+    }
+
+    .tv-chart-box{
+        height:520px;
+    }
+
+    #tradingview_chart{
+        min-height:520px !important;
+    }
+
+    .market-widget-card{
+        min-height:460px;
+        padding:14px;
+    }
+
+    .widget-title{
+        flex-direction:column;
+    }
+}

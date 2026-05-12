@@ -17,6 +17,12 @@ function tvSymbol($ticker){
     if($ticker === 'ETH') return 'BINANCE:ETHUSDT';
     if($ticker === 'DOGE') return 'BINANCE:DOGEUSDT';
 
+    // Algunos tickers pueden ser NYSE; TradingView permite cambio manual.
+    $nyse = ['KO','VZ','T','O','SCHD','VOO','SPY'];
+    if(in_array($ticker, $nyse)){
+        return 'NYSE:' . $ticker;
+    }
+
     return 'NASDAQ:' . $ticker;
 }
 
@@ -24,14 +30,15 @@ function money($n){
     return '$'.number_format((float)$n,2);
 }
 
-function pnlClass($shares,$price,$avg){
-    $pl = ((float)$shares * (float)$price) - ((float)$shares * (float)$avg);
-    return $pl >= 0 ? 'green' : 'red';
-}
-
 function pnlValue($shares,$price,$avg){
     return (((float)$shares * (float)$price) - ((float)$shares * (float)$avg));
 }
+
+function pnlClass($n){
+    return $n >= 0 ? 'green' : 'red';
+}
+
+$tvDefault = tvSymbol($defaultTicker);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,6 +51,7 @@ function pnlValue($shares,$price,$avg){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/live_charts.css">
+<link rel="stylesheet" href="../assets/live_charts_fix.css">
 </head>
 
 <body>
@@ -79,7 +87,7 @@ function pnlValue($shares,$price,$avg){
 
 <main class="content">
 
-<section class="charts-hero">
+<section class="charts-hero fixed-hero">
 <div>
 <p>TradingView Live Market</p>
 <h1>Gráficos live del portafolio</h1>
@@ -89,9 +97,15 @@ function pnlValue($shares,$price,$avg){
 <a class="charts-btn" href="../api/market_data_engine.php?redirect=../pages/live_charts.php">Actualizar precios</a>
 </section>
 
-<section class="charts-layout">
+<section class="ticker-tape-panel">
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+</div>
+</section>
 
-<div class="watchlist-panel">
+<section class="charts-layout fixed-charts-layout">
+
+<div class="watchlist-panel fixed-watchlist">
 <h2>Watchlist</h2>
 
 <div class="watchlist">
@@ -106,7 +120,7 @@ $pl = pnlValue($a['shares'],$a['current_price'],$a['avg_cost']);
 
     <div class="watch-price">
         <span><?=money($a['current_price'])?></span>
-        <b class="<?=pnlClass($a['shares'],$a['current_price'],$a['avg_cost'])?>">
+        <b class="<?=pnlClass($pl)?>">
             <?=money($pl)?>
         </b>
     </div>
@@ -115,21 +129,21 @@ $pl = pnlValue($a['shares'],$a['current_price'],$a['avg_cost']);
 </div>
 </div>
 
-<div class="chart-panel">
+<div class="chart-panel fixed-chart-panel">
 <div class="chart-top">
 <div>
 <h2><?=$defaultTicker?> Chart</h2>
-<p><?=tvSymbol($defaultTicker)?></p>
+<p><?=$tvDefault?></p>
 </div>
 
 <div class="chart-tabs">
-<a href="?ticker=<?=$defaultTicker?>">1D</a>
-<a href="?ticker=<?=$defaultTicker?>">1W</a>
-<a href="?ticker=<?=$defaultTicker?>">1M</a>
+<a href="?ticker=<?=$defaultTicker?>">D</a>
+<a href="?ticker=<?=$defaultTicker?>">W</a>
+<a href="?ticker=<?=$defaultTicker?>">M</a>
 </div>
 </div>
 
-<div class="tradingview-widget-container">
+<div class="tv-chart-box">
   <div id="tradingview_chart"></div>
 </div>
 
@@ -137,11 +151,30 @@ $pl = pnlValue($a['shares'],$a['current_price'],$a['avg_cost']);
 
 </section>
 
-<section class="market-overview-panel">
-<h2>Market Overview</h2>
-<div class="tradingview-widget-container">
+<section class="market-widgets-grid">
+
+<div class="market-widget-card">
+<div class="widget-title">
+<h2>Symbol Overview</h2>
+<p><?=$tvDefault?></p>
+</div>
+
+<div class="tradingview-widget-container fixed-symbol-overview">
   <div class="tradingview-widget-container__widget"></div>
 </div>
+</div>
+
+<div class="market-widget-card">
+<div class="widget-title">
+<h2>Technical Analysis</h2>
+<p>Resumen técnico</p>
+</div>
+
+<div class="tradingview-widget-container fixed-technical">
+  <div class="tradingview-widget-container__widget"></div>
+</div>
+</div>
+
 </section>
 
 </main>
@@ -152,57 +185,95 @@ $pl = pnlValue($a['shares'],$a['current_price'],$a['avg_cost']);
 <script>
 new TradingView.widget({
   "autosize": true,
-  "symbol": "<?=tvSymbol($defaultTicker)?>",
+  "symbol": "<?=$tvDefault?>",
   "interval": "D",
   "timezone": "America/Chicago",
   "theme": "dark",
   "style": "1",
   "locale": "en",
   "enable_publishing": false,
+  "hide_top_toolbar": false,
+  "hide_side_toolbar": false,
   "allow_symbol_change": true,
   "container_id": "tradingview_chart"
 });
 </script>
 
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
 {
-  "colorTheme": "dark",
-  "dateRange": "12M",
-  "showChart": true,
-  "locale": "en",
-  "largeChartUrl": "",
-  "isTransparent": true,
+  "symbols": [
+    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+    {"proName": "NASDAQ:IXIC", "title": "Nasdaq"},
+    {"proName": "NASDAQ:NVDA", "title": "NVDA"},
+    {"proName": "BINANCE:BTCUSDT", "title": "BTC"},
+    {"proName": "BINANCE:ETHUSDT", "title": "ETH"},
+    {"proName": "BINANCE:DOGEUSDT", "title": "DOGE"},
+    {"proName": "NYSE:KO", "title": "KO"},
+    {"proName": "NYSE:VZ", "title": "VZ"}
+  ],
   "showSymbolLogo": true,
-  "showFloatingTooltip": false,
+  "colorTheme": "dark",
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+</script>
+
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{
+  "symbols": [
+    [
+      "<?=$defaultTicker?>",
+      "<?=$tvDefault?>|1D"
+    ]
+  ],
+  "chartOnly": false,
   "width": "100%",
-  "height": "500",
-  "tabs": [
-    {
-      "title": "Indices",
-      "symbols": [
-        {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-        {"s": "NASDAQ:IXIC", "d": "Nasdaq"},
-        {"s": "DJ:DJI", "d": "Dow Jones"}
-      ]
-    },
-    {
-      "title": "Crypto",
-      "symbols": [
-        {"s": "BINANCE:BTCUSDT", "d": "Bitcoin"},
-        {"s": "BINANCE:ETHUSDT", "d": "Ethereum"},
-        {"s": "BINANCE:DOGEUSDT", "d": "Dogecoin"}
-      ]
-    },
-    {
-      "title": "Stocks",
-      "symbols": [
-        {"s": "NASDAQ:NVDA", "d": "NVIDIA"},
-        {"s": "NASDAQ:TSLA", "d": "Tesla"},
-        {"s": "NYSE:KO", "d": "Coca-Cola"},
-        {"s": "NYSE:VZ", "d": "Verizon"}
-      ]
-    }
+  "height": "420",
+  "locale": "en",
+  "colorTheme": "dark",
+  "autosize": true,
+  "showVolume": false,
+  "showMA": false,
+  "hideDateRanges": false,
+  "hideMarketStatus": false,
+  "hideSymbolLogo": false,
+  "scalePosition": "right",
+  "scaleMode": "Normal",
+  "fontFamily": "Arial, sans-serif",
+  "fontSize": "10",
+  "noTimeScale": false,
+  "valuesTracking": "1",
+  "changeMode": "price-and-percent",
+  "chartType": "area",
+  "maLineColor": "#2962FF",
+  "maLineWidth": 1,
+  "maLength": 9,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "lineWidth": 2,
+  "lineType": 0,
+  "dateRanges": [
+    "1d|1",
+    "1m|30",
+    "3m|60",
+    "12m|1D",
+    "60m|1W",
+    "all|1M"
   ]
+}
+</script>
+
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+{
+  "interval": "1D",
+  "width": "100%",
+  "isTransparent": true,
+  "height": "420",
+  "symbol": "<?=$tvDefault?>",
+  "showIntervalTabs": true,
+  "displayMode": "single",
+  "locale": "en",
+  "colorTheme": "dark"
 }
 </script>
 
