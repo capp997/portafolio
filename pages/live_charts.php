@@ -99,7 +99,24 @@ $tvDefault = tvSymbol($defaultTicker);
 
 <section class="ticker-tape-panel">
 <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-container__widget">
+    <script>
+      new TradingView.widget({
+        "autosize": true,
+        "symbol": "<?=$tvDefault?>",
+        "interval": "D",
+        "timezone": "America/Chicago",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "enable_publishing": false,
+        "hide_top_toolbar": false,
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_chart"
+        });
+</script>
+  </div>
 </div>
 </section>
 
@@ -160,66 +177,8 @@ $pl = pnlValue($a['shares'],$a['current_price'],$a['avg_cost']);
 </div>
 
 <div class="tradingview-widget-container fixed-symbol-overview">
-  <div class="tradingview-widget-container__widget"></div>
-</div>
-</div>
-
-<div class="market-widget-card">
-<div class="widget-title">
-<h2>Technical Analysis</h2>
-<p>Resumen técnico</p>
-</div>
-
-<div class="tradingview-widget-container fixed-technical">
-  <div class="tradingview-widget-container__widget"></div>
-</div>
-</div>
-
-</section>
-
-</main>
-</div>
-
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-
-<script>
-new TradingView.widget({
-  "autosize": true,
-  "symbol": "<?=$tvDefault?>",
-  "interval": "D",
-  "timezone": "America/Chicago",
-  "theme": "dark",
-  "style": "1",
-  "locale": "en",
-  "enable_publishing": false,
-  "hide_top_toolbar": false,
-  "hide_side_toolbar": false,
-  "allow_symbol_change": true,
-  "container_id": "tradingview_chart"
-});
-</script>
-
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-{
-  "symbols": [
-    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
-    {"proName": "NASDAQ:IXIC", "title": "Nasdaq"},
-    {"proName": "NASDAQ:NVDA", "title": "NVDA"},
-    {"proName": "BINANCE:BTCUSDT", "title": "BTC"},
-    {"proName": "BINANCE:ETHUSDT", "title": "ETH"},
-    {"proName": "BINANCE:DOGEUSDT", "title": "DOGE"},
-    {"proName": "NYSE:KO", "title": "KO"},
-    {"proName": "NYSE:VZ", "title": "VZ"}
-  ],
-  "showSymbolLogo": true,
-  "colorTheme": "dark",
-  "isTransparent": true,
-  "displayMode": "adaptive",
-  "locale": "en"
-}
-</script>
-
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+  <div class="tradingview-widget-container__widget">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
 {
   "symbols": [
     [
@@ -262,20 +221,63 @@ new TradingView.widget({
   ]
 }
 </script>
+  </div>
+</div>
+</div>
 
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+<div class="market-widget-card">
+<div class="widget-title">
+<h2>Technical Analysis</h2>
+<p>Resumen técnico</p>
+</div>
+
+<div class="tradingview-widget-container fixed-technical">
+  <div class="tradingview-widget-container__widget">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+      {
+        "interval": "1D",
+        "width": "100%",
+        "isTransparent": true,
+        "height": "420",
+        "symbol": "<?=$tvDefault?>",
+        "showIntervalTabs": true,
+        "displayMode": "single",
+        "locale": "en",
+        "colorTheme": "dark"
+      }
+    </script>
+  </div>
+</div>
+</div>
+
+</section>
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+
+
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
 {
-  "interval": "1D",
-  "width": "100%",
+  "symbols": [
+    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+    {"proName": "NASDAQ:IXIC", "title": "Nasdaq"},
+    {"proName": "NASDAQ:NVDA", "title": "NVDA"},
+    {"proName": "BINANCE:BTCUSDT", "title": "BTC"},
+    {"proName": "BINANCE:ETHUSDT", "title": "ETH"},
+    {"proName": "BINANCE:DOGEUSDT", "title": "DOGE"},
+    {"proName": "NYSE:KO", "title": "KO"},
+    {"proName": "NYSE:VZ", "title": "VZ"}
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
   "isTransparent": true,
-  "height": "420",
-  "symbol": "<?=$tvDefault?>",
-  "showIntervalTabs": true,
-  "displayMode": "single",
-  "locale": "en",
-  "colorTheme": "dark"
+  "displayMode": "adaptive",
+  "locale": "en"
 }
 </script>
+</main>
+</div>
+
+
 
 <script src="../assets/menu_dropdown.js"></script>
 </body>
