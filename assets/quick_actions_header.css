@@ -1,0 +1,142 @@
+/* QUICK ACTIONS HEADER - al lado de la fecha */
+
+.dashboard-premium-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:22px;
+}
+
+.header-right-tools{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.dashboard-date-pill{
+    background:#0f172a;
+    border:1px solid #26344f;
+    border-radius:16px;
+    padding:12px 18px;
+    color:#e2e8f0;
+    box-shadow:0 10px 30px rgba(0,0,0,.22);
+    white-space:nowrap;
+}
+
+.header-icon-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.header-icon-btn{
+    width:46px;
+    height:46px;
+    border-radius:15px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:white;
+    background:#0f172a;
+    border:1px solid #26344f;
+    font-size:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.22);
+    transition:.2s ease;
+    position:relative;
+}
+
+.header-icon-btn:hover{
+    transform:translateY(-2px);
+    border-color:#60a5fa;
+}
+
+.header-icon-btn.green{
+    background:linear-gradient(135deg,#16a34a,#14532d);
+}
+
+.header-icon-btn.blue{
+    background:linear-gradient(135deg,#2563eb,#172554);
+}
+
+.header-icon-btn.orange{
+    background:linear-gradient(135deg,#f97316,#7c2d12);
+}
+
+.header-icon-btn.purple{
+    background:linear-gradient(135deg,#7c3aed,#3b0764);
+}
+
+.header-icon-btn.dark{
+    background:linear-gradient(135deg,#111827,#020617);
+}
+
+.header-icon-btn::after{
+    content:attr(data-tip);
+    position:absolute;
+    top:54px;
+    right:0;
+    background:#020617;
+    border:1px solid #334155;
+    color:white;
+    font-size:12px;
+    padding:7px 10px;
+    border-radius:10px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(-4px);
+    transition:.18s ease;
+    z-index:50;
+}
+
+.header-icon-btn:hover::after{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Ocultar bloque viejo si todavía existe */
+.quick-actions-panel,
+.action-panel.quick-actions-panel{
+    display:none !important;
+}
+
+@media(max-width:900px){
+    .dashboard-premium-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .header-right-tools{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .header-icon-actions{
+        flex-wrap:wrap;
+    }
+}
+
+@media(max-width:600px){
+    .header-right-tools{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .dashboard-date-pill{
+        text-align:center;
+    }
+
+    .header-icon-actions{
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        width:100%;
+    }
+
+    .header-icon-btn{
+        width:100%;
+    }
+}
