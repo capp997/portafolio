@@ -70,6 +70,7 @@ function m($n){
 <link rel="stylesheet" href="assets/ai_dashboard_cards.css">
 <link rel="stylesheet" href="assets/dashboard_premium_ui.css">
 <link rel="stylesheet" href="assets/premium_ui_pack.css">
+<link rel="stylesheet" href="assets/live_charts.css">
 <script src="assets/mobile_premium.js"></script>
 <script src="assets/auto_refresh.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -177,7 +178,7 @@ if ('serviceWorker' in navigator) {
     </div>
 </section>-->
 <?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
-
+<?php include __DIR__ . "/components/live_market_mini.php"; ?>
 <section class="cards-grid">
 
     <div class="card premium-glow">
