@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_SESSION["user_id"]) && !isset($_GET["debug"])){
+    header("Location: /index_v5.php");
+    exit;
+}
 require_once __DIR__ . "/config/db.php";
 
 $error = "";
