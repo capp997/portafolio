@@ -35,12 +35,17 @@ $error = $_GET['error'] ?? '';
             <label>Contraseña</label>
             <input type="password" name="password" required placeholder="Tu contraseña" autocomplete="current-password">
             <button type="submit">Entrar</button>
+            
+            <?php if(isset($_GET['registered'])): ?>
+            <div class="auth-success">Usuario creado correctamente. Ya puedes iniciar sesión ✅</div>
+            <?php endif; ?>
+
+            <div class="auth-links">
+                <a href="register.php">Crear cuenta nueva</a>
+            </div>
         </form>
 
-        <small>
-            Usuario inicial: <b>admin</b><br>
-            Contraseña inicial: <b>CambiaEstaClave123!</b>
-        </small>
+        
     </div>
 </div>
 
