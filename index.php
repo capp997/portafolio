@@ -1,5 +1,11 @@
 <?php
-require_once __DIR__ . "/config/auth.php";
-header("Location: index_v5.php");
+session_start();
+
+if(isset($_SESSION["user_id"])){
+    header("Location: /index_v5.php");
+    exit;
+}
+
+header("Location: /login.php");
 exit;
 ?>
