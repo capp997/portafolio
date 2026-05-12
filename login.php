@@ -2,84 +2,39 @@
 session_start();
 require_once __DIR__ . "/config/db.php";
 
-$mode = $_GET['mode'] ?? 'login';
-if(!in_array($mode, ['login','register','forgot'])){
-    $mode = 'login';
-}
-
-$error = $_GET['error'] ?? '';
-$success = $_GET['success'] ?? '';
+$error = "";
 $registered = isset($_GET['registered']);
 
-function errorText($e){
-    return match($e){
-        'missing' => 'Completa todos los campos requeridos.',
-        'invalid' => 'Datos inválidos.',
-        'exists' => 'Ese usuario o email ya existe.',
-        'password' => 'La contraseña debe tener mínimo 6 caracteres.',
-        'match' => 'Las contraseñas no coinciden.',
-        'email' => 'Email no válido.',
-        'login' => 'Usuario o contraseña incorrectos.',
-        'inactive' => 'Este usuario está desactivado.',
-        'db' => 'Error conectando con la base de datos.',
-        'notfound' => 'No encontramos ese usuario o email.',
-        default => ''
-    };
-}
-
-function successText($s){
-    return match($s){
-        'registered' => 'Cuenta creada correctamente. Ya puedes iniciar sesión.',
-        'reset' => 'Contraseña actualizada correctamente. Ya puedes iniciar sesión.',
-        default => ''
-    };
-}
-
-if($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST['action'] ?? '') === 'login'){
+if($_SERVER["REQUEST_METHOD"] === "POST"){
     $username = trim($_POST["username"] ?? "");
     $password = $_POST["password"] ?? "";
 
     if(!$username || !$password){
-        header("Location: login.php?error=missing");
-        exit;
-    }
+        $error = "Completa usuario/email y contraseña.";
+    }else{
+        try{
+            $stmt = $pdo->prepare("
+                SELECT *
+                FROM users
+                WHERE username = ? OR email = ?
+                LIMIT 1
+            ");
+            $stmt->execute([$username, $username]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    try{
-        $stmt = $pdo->prepare("
-            SELECT *
-            FROM users
-            WHERE username = ? OR email = ?
-            LIMIT 1
-        ");
-        $stmt->execute([$username, $username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($user && (int)$user["is_active"] === 1 && password_verify($password, $user["password_hash"])){
+                $_SESSION["user_id"] = $user["id"];
+                $_SESSION["username"] = $user["username"];
+                $_SESSION["role"] = $user["role"] ?? "user";
 
-        if(!$user){
-            header("Location: login.php?error=login");
-            exit;
+                header("Location: index_v5.php");
+                exit;
+            }else{
+                $error = "Usuario o contraseña incorrectos.";
+            }
+        }catch(Exception $e){
+            $error = "Error conectando con la base de datos.";
         }
-
-        if((int)($user["is_active"] ?? 1) !== 1){
-            header("Location: login.php?error=inactive");
-            exit;
-        }
-
-        if(password_verify($password, $user["password_hash"])){
-            $_SESSION["user_id"] = $user["id"];
-            $_SESSION["username"] = $user["username"];
-            $_SESSION["role"] = $user["role"] ?? "user";
-
-            session_write_close();
-            header("Location: index_v5.php");
-            exit;
-        }
-
-        header("Location: login.php?error=login");
-        exit;
-
-    }catch(Exception $e){
-        header("Location: login.php?error=db");
-        exit;
     }
 }
 ?>
