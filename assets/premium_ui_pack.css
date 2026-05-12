@@ -1,0 +1,293 @@
+/* =========================================================
+   PREMIUM UI PACK - Portafolio V5
+   Glassmorphism + fintech glow + mobile polish
+   ========================================================= */
+
+:root{
+    --premium-bg:#050816;
+    --premium-card:rgba(15,23,42,.82);
+    --premium-card-soft:rgba(15,23,42,.62);
+    --premium-border:rgba(148,163,184,.18);
+    --premium-glow-blue:rgba(59,130,246,.26);
+    --premium-glow-purple:rgba(124,58,237,.26);
+    --premium-glow-green:rgba(34,197,94,.22);
+    --premium-text:#f8fafc;
+    --premium-muted:#94a3b8;
+}
+
+/* Fondo general */
+body{
+    background:
+        radial-gradient(circle at 15% 5%, rgba(124,58,237,.16), transparent 28%),
+        radial-gradient(circle at 85% 8%, rgba(37,99,235,.14), transparent 30%),
+        radial-gradient(circle at 50% 95%, rgba(34,197,94,.08), transparent 32%),
+        #050816 !important;
+}
+
+/* Animación suave general */
+.card,
+.panel,
+.ai-dash-card,
+.analytics-panel,
+.sell-panel,
+.report-card,
+.notification-card,
+.insight-card,
+.signal-card,
+.scheduler-card,
+.advisor-card{
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease !important;
+}
+
+.card:hover,
+.panel:hover,
+.ai-dash-card:hover,
+.analytics-panel:hover,
+.sell-panel:hover,
+.report-card:hover,
+.notification-card:hover,
+.insight-card:hover,
+.signal-card:hover,
+.scheduler-card:hover,
+.advisor-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 24px 70px rgba(0,0,0,.32), 0 0 40px rgba(59,130,246,.06) !important;
+    border-color:rgba(96,165,250,.35) !important;
+}
+
+/* Glass cards */
+.premium-glass,
+.card,
+.panel,
+.ai-dash-card,
+.analytics-panel,
+.notification-card,
+.insight-card,
+.signal-card,
+.scheduler-card,
+.report-card{
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+}
+
+/* Glow border */
+.premium-border-glow{
+    position:relative;
+}
+
+.premium-border-glow:after{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:inherit;
+    padding:1px;
+    background:linear-gradient(135deg,rgba(59,130,246,.45),rgba(124,58,237,.32),rgba(34,197,94,.25));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+}
+
+/* Botones premium */
+a,
+button{
+    transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+
+a:hover,
+button:hover{
+    transform:translateY(-1px);
+}
+
+.header-icon-btn,
+.action-btn,
+.hero-btn,
+.analytics-btn,
+.market-btn,
+.signals-btn,
+.advisor-btn,
+.reports-main-btn{
+    box-shadow:0 14px 38px rgba(0,0,0,.28) !important;
+}
+
+/* Sección widgets premium */
+.premium-widgets{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:18px;
+    margin-bottom:22px;
+}
+
+.premium-widget{
+    background:linear-gradient(180deg,rgba(15,23,42,.90),rgba(8,13,27,.90));
+    border:1px solid rgba(148,163,184,.18);
+    border-radius:26px;
+    padding:22px;
+    box-shadow:0 22px 70px rgba(0,0,0,.26);
+    overflow:hidden;
+    position:relative;
+}
+
+.premium-widget:before{
+    content:"";
+    position:absolute;
+    top:-70px;
+    right:-70px;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(59,130,246,.22);
+}
+
+.premium-widget h2{
+    margin:0 0 8px;
+    font-size:24px;
+    position:relative;
+    z-index:2;
+}
+
+.premium-widget p{
+    color:#94a3b8;
+    margin:0 0 18px;
+    position:relative;
+    z-index:2;
+}
+
+.mini-chart{
+    height:140px;
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    position:relative;
+    z-index:2;
+}
+
+.mini-chart span{
+    flex:1;
+    border-radius:999px 999px 6px 6px;
+    background:linear-gradient(180deg,#60a5fa,#2563eb);
+    min-height:18px;
+    box-shadow:0 0 18px rgba(37,99,235,.28);
+    animation:barFloat 2.8s ease-in-out infinite;
+}
+
+.mini-chart span:nth-child(2n){
+    background:linear-gradient(180deg,#a78bfa,#7c3aed);
+    animation-delay:.2s;
+}
+
+.mini-chart span:nth-child(3n){
+    background:linear-gradient(180deg,#4ade80,#16a34a);
+    animation-delay:.35s;
+}
+
+@keyframes barFloat{
+    0%,100%{filter:brightness(1);}
+    50%{filter:brightness(1.25);}
+}
+
+.market-pulse-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    position:relative;
+    z-index:2;
+}
+
+.market-pulse-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(2,6,23,.55);
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:16px;
+    padding:13px 14px;
+}
+
+.market-pulse-row strong{
+    font-size:15px;
+}
+
+.market-pulse-row span{
+    font-weight:900;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:12px;
+}
+
+.pulse-up{
+    background:rgba(22,163,74,.15);
+    color:#86efac;
+}
+
+.pulse-down{
+    background:rgba(220,38,38,.16);
+    color:#fca5a5;
+}
+
+.pulse-neutral{
+    background:rgba(59,130,246,.15);
+    color:#bfdbfe;
+}
+
+/* Mobile premium feel */
+@media(max-width:900px){
+    .premium-widgets{
+        grid-template-columns:1fr;
+    }
+
+    .content{
+        padding-bottom:100px !important;
+    }
+
+    .card,
+    .panel,
+    .ai-dash-card,
+    .premium-widget{
+        border-radius:22px !important;
+    }
+
+    .sidebar{
+        box-shadow:none !important;
+    }
+}
+
+/* Bottom mobile quick bar */
+.mobile-bottom-bar{
+    display:none;
+}
+
+@media(max-width:760px){
+    .mobile-bottom-bar{
+        position:fixed;
+        left:12px;
+        right:12px;
+        bottom:14px;
+        z-index:999;
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        gap:8px;
+        background:rgba(2,6,23,.86);
+        border:1px solid rgba(148,163,184,.18);
+        backdrop-filter:blur(18px);
+        border-radius:22px;
+        padding:10px;
+        box-shadow:0 22px 70px rgba(0,0,0,.45);
+    }
+
+    .mobile-bottom-bar a{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:44px;
+        border-radius:15px;
+        background:rgba(15,23,42,.82);
+        color:white;
+        text-decoration:none;
+        font-size:20px;
+    }
+
+    .mobile-bottom-bar a.active{
+        background:linear-gradient(135deg,#2563eb,#172554);
+    }
+}
