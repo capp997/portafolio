@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -62,32 +63,13 @@ function actionClass($a){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/activity_logs.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">🛡️</div>
-<div><h1>Auditoría</h1><p>Activity Logs</p></div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a href="users.php">👥 Usuarios</a>
-<a class="active" href="activity_logs.php">🛡️ Activity Logs</a>
-<a href="automation_center.php">⚙️ Automation</a>
-<a href="scheduler_center.php">⏰ Scheduler</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/export_activity_logs.php">⬇ Export CSV</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('activity_logs', '../'); ?>
 
 <main class="content">
 

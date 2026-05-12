@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -24,38 +25,14 @@ try{ $countHistory = $pdo->query("SELECT COUNT(*) FROM portfolio_history")->fetc
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/report_center.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">📄</div>
-<div>
-<h1>Reports</h1>
-<p>Export Center</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="report_center.php">📄 Report Center</a>
-<a href="advanced_analytics.php">📊 Analytics</a>
-<a href="sell.php">💸 Ventas</a>
-<a href="compras.php">🛒 Compras</a>
-<a href="dividend_tracker.php">💰 Dividend Tracker</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="portfolio_report.php">🖨️ Reporte PDF</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('report_center', '../'); ?>
 
 <main class="content">
 

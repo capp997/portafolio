@@ -76,6 +76,7 @@ function numberFlex($n){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="../assets/report_center.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 
@@ -209,5 +210,6 @@ $rowPl = $value - $basis;
 
 </div>
 
+<script src="../assets/menu_dropdown.js"></script>
 </body>
 </html>

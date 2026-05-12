@@ -1,16 +1,41 @@
 <?php
+function menu_page_exists($base, $file){
+    return file_exists(__DIR__ . '/../pages/' . $file);
+}
+
+function menu_item($active, $key, $href, $icon, $label){
+    $class = $active === $key ? 'active' : '';
+    echo '<a class="'.$class.'" href="'.$href.'"><span class="menu-ico">'.$icon.'</span><span>'.$label.'</span></a>';
+}
+
+function menu_group($active, $keys, $icon, $label, $items, $base){
+    $open = in_array($active, $keys) ? 'open' : '';
+    echo '<div class="menu-group '.$open.'">';
+    echo '<button type="button" class="menu-parent"><span><span class="menu-ico">'.$icon.'</span>'.$label.'</span><span class="chevron">⌄</span></button>';
+    echo '<div class="submenu">';
+    foreach($items as $it){
+        if(isset($it['file']) && !menu_page_exists($base, $it['file'])) continue;
+        menu_item($active, $it['key'], $base.'pages/'.$it['file'], $it['icon'], $it['label']);
+    }
+    echo '</div></div>';
+}
+
 function render_sidebar($active='dashboard', $base=''){
-    // $base = '' for index_v5.php, '../' for files inside /pages
+    if(session_status() === PHP_SESSION_NONE){ session_start(); }
+
     $isAdmin = (($_SESSION['role'] ?? '') === 'admin');
 
-    $alertPages = ['alertas','centro_alertas','notifications','push_notifications','smart_signals','ai_insights'];
-    $tradePages = ['compras','sell'];
-    $dividendPages = ['dividendos','dividend_tracker'];
-    $analyticsPages = ['advanced_analytics','market_data','ai_portfolio_advisor','ai_finance_chat'];
-    $automationPages = ['automation_center','scheduler_center'];
-    $historyPages = ['historial','historial_avanzado'];
+    $operations = ['compras','sell'];
+    $alerts = ['alertas','centro_alertas','notifications','push_notifications'];
+    $ai = ['ai_insights','ai_finance_chat','ai_portfolio_advisor','ai_admin_center','smart_signals'];
+    $analytics = ['advanced_analytics','market_data','live_charts','report_center','portfolio_report'];
+    $dividends = ['dividendos','dividend_tracker'];
+    $automation = ['automation_center','scheduler_center'];
+    $history = ['historial','historial_avanzado','activity_logs'];
+    $planning = ['metas','rutinas','rebalanceo'];
+    $admin = ['users','activity_logs','ai_admin_center'];
 ?>
-<aside class="sidebar">
+<aside class="sidebar unified-sidebar">
     <div>
         <div class="brand">
             <div class="logo">📈</div>
@@ -20,100 +45,83 @@ function render_sidebar($active='dashboard', $base=''){
             </div>
         </div>
 
-        <nav class="premium-menu">
-            <a class="<?= $active=='dashboard'?'active':'' ?>" href="<?= $base ?>index_v5.php">🏠 Dashboard</a>
-            <a class="<?= $active=='activos'?'active':'' ?>" href="<?= $base ?>pages/activos.php">📊 Activos</a>
+        <nav class="premium-menu unified-menu">
+            <?php menu_item($active,'dashboard',$base.'index_v5.php','🏠','Dashboard'); ?>
+            <?php if(menu_page_exists($base,'activos.php')) menu_item($active,'activos',$base.'pages/activos.php','📊','Activos'); ?>
 
-            <div class="menu-group <?= in_array($active, $tradePages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>💼 Operaciones</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='compras'?'active':'' ?>" href="<?= $base ?>pages/compras.php">🛒 Compras</a>
-                    <a class="<?= $active=='sell'?'active':'' ?>" href="<?= $base ?>pages/sell.php">💸 Ventas</a>
-                </div>
-            </div>
+            <?php menu_group($active,$operations,'💼','Operaciones',[
+                ['key'=>'compras','file'=>'compras.php','icon'=>'🛒','label'=>'Compras'],
+                ['key'=>'sell','file'=>'sell.php','icon'=>'💸','label'=>'Ventas'],
+            ],$base); ?>
 
-            <div class="menu-group <?= in_array($active, $alertPages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>🔔 Alertas</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='alertas'?'active':'' ?>" href="<?= $base ?>pages/alertas.php">Alertas</a>
-                    <a class="<?= $active=='centro_alertas'?'active':'' ?>" href="<?= $base ?>pages/centro_alertas.php">Centro Alertas</a>
-                    <a class="<?= $active=='notifications'?'active':'' ?>" href="<?= $base ?>pages/notifications.php">Notificaciones</a>
-                    <a class="<?= $active=='push_notifications'?'active':'' ?>" href="<?= $base ?>pages/push_notifications.php">Push Notifications</a>
-                    <a class="<?= $active=='smart_signals'?'active':'' ?>" href="<?= $base ?>pages/smart_signals.php">Smart Signals</a>
-                    <a class="<?= $active=='ai_insights'?'active':'' ?>" href="<?= $base ?>pages/ai_insights.php">AI Insights</a>
-                </div>
-            </div>
+            <?php menu_group($active,$alerts,'🔔','Alertas',[
+                ['key'=>'alertas','file'=>'alertas.php','icon'=>'🔔','label'=>'Alertas'],
+                ['key'=>'centro_alertas','file'=>'centro_alertas.php','icon'=>'🚨','label'=>'Centro Alertas'],
+                ['key'=>'notifications','file'=>'notifications.php','icon'=>'📬','label'=>'Notificaciones'],
+                ['key'=>'push_notifications','file'=>'push_notifications.php','icon'=>'📲','label'=>'Push Notifications'],
+            ],$base); ?>
 
-            <div class="menu-group <?= in_array($active, $dividendPages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>💰 Dividendos</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='dividendos'?'active':'' ?>" href="<?= $base ?>pages/dividendos.php">Dividendos</a>
-                    <a class="<?= $active=='dividend_tracker'?'active':'' ?>" href="<?= $base ?>pages/dividend_tracker.php">Dividend Tracker</a>
-                </div>
-            </div>
+            <?php menu_group($active,$ai,'🧠','AI Center',[
+                ['key'=>'ai_insights','file'=>'ai_insights.php','icon'=>'✨','label'=>'AI Insights'],
+                ['key'=>'ai_finance_chat','file'=>'ai_finance_chat.php','icon'=>'💬','label'=>'AI Finance Chat'],
+                ['key'=>'ai_portfolio_advisor','file'=>'ai_portfolio_advisor.php','icon'=>'🧠','label'=>'AI Advisor'],
+                ['key'=>'smart_signals','file'=>'smart_signals.php','icon'=>'🤖','label'=>'Smart Signals'],
+                ['key'=>'ai_admin_center','file'=>'ai_admin_center.php','icon'=>'🛡️','label'=>'AI Admin Center'],
+            ],$base); ?>
 
-            <div class="menu-group <?= in_array($active, $analyticsPages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>📊 Analytics</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='advanced_analytics'?'active':'' ?>" href="<?= $base ?>pages/advanced_analytics.php">Advanced Analytics</a>
-                    <a class="<?= $active=='market_data'?'active':'' ?>" href="<?= $base ?>pages/market_data.php">Market Data</a>
-                    <a class="<?= $active=='ai_portfolio_advisor'?'active':'' ?>" href="<?= $base ?>pages/ai_portfolio_advisor.php">AI Portfolio Advisor</a>
-                    <a class="<?= $active=='ai_finance_chat'?'active':'' ?>" href="<?= $base ?>pages/ai_finance_chat.php">AI Finance Chat</a>
-                </div>
-            </div>
+            <?php menu_group($active,$analytics,'📊','Analytics & Reports',[
+                ['key'=>'advanced_analytics','file'=>'advanced_analytics.php','icon'=>'📈','label'=>'Advanced Analytics'],
+                ['key'=>'market_data','file'=>'market_data.php','icon'=>'📡','label'=>'Market Data'],
+                ['key'=>'live_charts','file'=>'live_charts.php','icon'=>'📉','label'=>'Live Charts'],
+                ['key'=>'report_center','file'=>'report_center.php','icon'=>'📄','label'=>'Report Center'],
+                ['key'=>'portfolio_report','file'=>'portfolio_report.php','icon'=>'🖨️','label'=>'Portfolio Report'],
+            ],$base); ?>
 
-            <div class="menu-group <?= in_array($active, $automationPages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>⚙️ Automation</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='automation_center'?'active':'' ?>" href="<?= $base ?>pages/automation_center.php">Automation Center</a>
-                    <a class="<?= $active=='scheduler_center'?'active':'' ?>" href="<?= $base ?>pages/scheduler_center.php">Scheduler / Cron</a>
-                </div>
-            </div>
+            <?php menu_group($active,$dividends,'💰','Dividendos',[
+                ['key'=>'dividendos','file'=>'dividendos.php','icon'=>'💵','label'=>'Dividendos'],
+                ['key'=>'dividend_tracker','file'=>'dividend_tracker.php','icon'=>'📅','label'=>'Dividend Tracker'],
+            ],$base); ?>
 
-            <div class="menu-group <?= in_array($active, $historyPages) ? 'open' : '' ?>">
-                <button type="button" class="menu-parent">
-                    <span>📚 Historial</span>
-                    <span class="chevron">⌄</span>
-                </button>
-                <div class="submenu">
-                    <a class="<?= $active=='historial'?'active':'' ?>" href="<?= $base ?>pages/historial.php">Historial</a>
-                    <a class="<?= $active=='historial_avanzado'?'active':'' ?>" href="<?= $base ?>pages/historial_avanzado.php">Historial Pro</a>
-                </div>
-            </div>
+            <?php menu_group($active,$planning,'🎯','Planificación',[
+                ['key'=>'metas','file'=>'metas.php','icon'=>'🎯','label'=>'Metas'],
+                ['key'=>'rutinas','file'=>'rutinas.php','icon'=>'🗓️','label'=>'Rutinas'],
+                ['key'=>'rebalanceo','file'=>'rebalanceo.php','icon'=>'⚖️','label'=>'Rebalanceo'],
+            ],$base); ?>
 
-            <a class="<?= $active=='rebalanceo'?'active':'' ?>" href="<?= $base ?>pages/rebalanceo.php">⚖️ Rebalanceo</a>
-            <a class="<?= $active=='rutinas'?'active':'' ?>" href="<?= $base ?>pages/rutinas.php">🗓️ Rutinas</a>
-            <a class="<?= $active=='metas'?'active':'' ?>" href="<?= $base ?>pages/metas.php">🎯 Metas</a>
+            <?php menu_group($active,$automation,'⚙️','Automation',[
+                ['key'=>'automation_center','file'=>'automation_center.php','icon'=>'⚙️','label'=>'Automation Center'],
+                ['key'=>'scheduler_center','file'=>'scheduler_center.php','icon'=>'⏰','label'=>'Scheduler / Cron'],
+            ],$base); ?>
+
+            <?php menu_group($active,$history,'📚','Historial & Auditoría',[
+                ['key'=>'historial','file'=>'historial.php','icon'=>'📜','label'=>'Historial'],
+                ['key'=>'historial_avanzado','file'=>'historial_avanzado.php','icon'=>'📈','label'=>'Historial Pro'],
+                ['key'=>'activity_logs','file'=>'activity_logs.php','icon'=>'🛡️','label'=>'Activity Logs'],
+            ],$base); ?>
 
             <?php if($isAdmin): ?>
-            <a class="<?= $active=='users'?'active':'' ?>" href="<?= $base ?>pages/users.php">👤 Usuarios</a>
+            <?php menu_group($active,$admin,'👥','Admin',[
+                ['key'=>'users','file'=>'users.php','icon'=>'👥','label'=>'Usuarios'],
+                ['key'=>'activity_logs','file'=>'activity_logs.php','icon'=>'🛡️','label'=>'Activity Logs'],
+                ['key'=>'ai_admin_center','file'=>'ai_admin_center.php','icon'=>'🧠','label'=>'AI Admin Center'],
+            ],$base); ?>
             <?php endif; ?>
         </nav>
     </div>
 
     <div class="sidebar-footer">
-        <a href="<?= $base ?>api/market_data_engine.php?redirect=<?= $base ?>index_v5.php">📡 Market Data</a>
+        <?php if(file_exists(__DIR__.'/../api/market_data_engine.php')): ?>
+        <a href="<?= $base ?>api/market_data_engine.php?redirect=<?= $base ?>index_v5.php">📡 Actualizar precios</a>
+        <?php endif; ?>
+        <?php if(file_exists(__DIR__.'/../api/save_snapshot.php')): ?>
         <a href="<?= $base ?>api/save_snapshot.php">💾 Guardar snapshot</a>
+        <?php endif; ?>
+        <?php if(file_exists(__DIR__.'/../api/generate_notifications.php')): ?>
         <a href="<?= $base ?>api/generate_notifications.php">🔔 Generar notificaciones</a>
-        <a href="<?= $base ?>api/smart_dividend_engine.php">💰 Smart Dividend Engine</a>
-        <a href="<?= $base ?>api/logout.php">Cerrar sesión</a>
+        <?php endif; ?>
+        <?php if(file_exists(__DIR__.'/../api/logout.php')): ?>
+        <a class="logout-link" href="<?= $base ?>api/logout.php">Cerrar sesión</a>
+        <?php endif; ?>
     </div>
 </aside>
-<?php
-}
-?>
+<?php } ?>

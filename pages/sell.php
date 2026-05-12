@@ -42,6 +42,7 @@ function numberFlex($n){
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/sell.css">
 <link rel="stylesheet" href="../assets/global_page_fix.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 
 <body>

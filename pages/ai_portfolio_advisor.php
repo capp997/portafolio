@@ -31,6 +31,7 @@ if(!$report){
 <link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
 <link rel="stylesheet" href="../assets/mobile_premium.css">
 <link rel="stylesheet" href="../assets/global_page_fix.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 <div class="layout">

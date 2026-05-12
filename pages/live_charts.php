@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -131,54 +132,14 @@ if($selectedPct > 5){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="../assets/live_charts_premium_final.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 
 <body>
 
 <div class="tv-layout">
 
-<aside class="tv-sidebar">
-    <div class="tv-brand">
-        <div class="tv-logo">📈</div>
-        <div>
-            <h1>Live Charts</h1>
-            <p>TradingView</p>
-        </div>
-    </div>
-
-    <nav class="tv-nav">
-        <a href="../index_v5.php">🏠 Dashboard</a>
-        <a class="active" href="live_charts.php">📈 Live Charts</a>
-        <a href="advanced_analytics.php">📊 Analytics</a>
-        <a href="smart_signals.php">🤖 Smart Signals</a>
-        <a href="market_data.php">📡 Market Data</a>
-        <a href="ai_insights.php">✨ AI Insights</a>
-        <a href="report_center.php">📄 Reports</a>
-        <a href="notifications.php">🔔 Alerts <span>3</span></a>
-    </nav>
-
-    <div class="market-status-box">
-        <h3>● Mercados Abiertos</h3>
-        <div><span>NYSE</span><b>Abierto</b></div>
-        <div><span>NASDAQ</span><b>Abierto</b></div>
-        <div><span>Crypto</span><b>24/7</b></div>
-        <div><span>Forex</span><b>Abierto</b></div>
-    </div>
-
-    <div class="premium-box">
-        <h3>👑 Premium Plan</h3>
-        <p>Accede a datos en tiempo real, más indicadores y alertas avanzadas.</p>
-        <a href="ai_insights.php">Actualizar ahora</a>
-    </div>
-
-    <div class="investor-box">
-        <div class="avatar">👤</div>
-        <div>
-            <strong>Inversionista</strong>
-            <span>Plan Premium</span>
-        </div>
-    </div>
-</aside>
+<?php render_sidebar('live_charts', '../'); ?>
 
 <main class="tv-main">
 
@@ -384,5 +345,6 @@ new TradingView.widget({
 });
 </script>
 
+<script src="../assets/menu_dropdown.js"></script>
 </body>
 </html>

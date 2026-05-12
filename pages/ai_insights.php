@@ -29,11 +29,12 @@ function typeClass($type){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/ai_insights_engine.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 
 <body>
     <div class="layout">
-        <?php render_sidebar('advanced_analytics', '../'); ?>
+        <?php render_sidebar('ai_insights', '../'); ?>
 
         <main class="content">
 

@@ -82,6 +82,7 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <link rel="stylesheet" href="assets/global_page_fix.css">
+<link rel="stylesheet" href="assets/menu_unified_full.css">
 </head>
 
 <body>

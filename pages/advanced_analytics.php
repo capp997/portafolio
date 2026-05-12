@@ -69,10 +69,11 @@ function money($n){ return '$'.number_format((float)$n,2); }
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="../assets/sidebar_buttons_fix.css">
 <link rel="stylesheet" href="../assets/mobile_premium.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 <div class="layout">
-<?php render_sidebar('advanced_analytics', '../'); ?>
+<?php render_sidebar('ai_insights', '../'); ?>
 
 <main class="content">
 <section class="analytics-hero">

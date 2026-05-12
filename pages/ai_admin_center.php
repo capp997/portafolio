@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -132,35 +133,13 @@ function niceDate($d){
 <link rel="stylesheet" href="../assets/unified_pages.css">
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/ai_admin_center.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">🧠</div>
-<div><h1>AI Admin</h1><p>Control Center</p></div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="ai_admin_center.php">🧠 AI Admin Center</a>
-<a href="users.php">👥 Usuarios</a>
-<a href="activity_logs.php">🛡️ Activity Logs</a>
-<a href="automation_center.php">⚙️ Automation</a>
-<a href="scheduler_center.php">⏰ Scheduler</a>
-<a href="ai_insights.php">✨ AI Insights</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/run_admin_health_check.php">🩺 Health Check</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('ai_admin_center', '../'); ?>
 
 <main class="content">
 

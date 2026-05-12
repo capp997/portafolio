@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -54,29 +55,13 @@ function errorText($error){
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/users_multiuser.css">
 <link rel="stylesheet" href="../assets/users_crud.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">👥</div>
-<div><h1>Usuarios</h1><p>Multiusuario</p></div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="users.php">👥 Usuarios</a>
-<a href="../login.php?mode=register">➕ Crear usuario</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
+<?php render_sidebar('users', '../'); ?>
 
 <main class="content">
 

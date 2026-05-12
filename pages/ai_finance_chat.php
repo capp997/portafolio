@@ -14,6 +14,7 @@ require_once __DIR__ . "/../config/auth.php";
 <link rel="stylesheet" href="../assets/menu_dropdown.css">
 <link rel="stylesheet" href="../assets/openai_chat.css">
 <link rel="stylesheet" href="../assets/global_page_fix.css">
+<link rel="stylesheet" href="../assets/menu_unified_full.css">
 </head>
 <body>
 
