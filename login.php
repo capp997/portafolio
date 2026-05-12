@@ -73,7 +73,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST['action'] ?? '') === 'login'
             exit;
         }
 
-        header("Location: login.php?error=login");
+        session_write_close();
+        header("Location: index_v5.php");
         exit;
 
     }catch(Exception $e){
