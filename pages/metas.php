@@ -396,7 +396,7 @@ $globalPct = pct($totalCurrent,$totalTarget);
             <label>Fecha</label>
             <input type="date" name="deadline" value="<?=$r['deadline']?>">
 
-            <button>Guardar</button>
+            <br><button>Guardar</button>
         </form>
 
         <form class="delete-form" action="../api/delete_goal.php" method="POST" onsubmit="return confirm('¿Eliminar esta meta?')">
