@@ -1,5 +1,5 @@
 <?php require_once __DIR__.'/../config/db.php'; 
-require_once __DIR__.'/../config/layout.php'; 
+require_once __DIR__.'/../config/menu.php';
 page_start('Activos','activos'); 
 $assets=$pdo->query("SELECT * FROM assets ORDER BY id")->fetchAll(PDO::FETCH_ASSOC); function m($n){return '$'.number_format((float)$n,2);} ?>
 <section class="hero"><div><h1>Activos</h1><p>Shares, costo promedio, precio actual, valor total y ganancia/pérdida.</p></div></section>
