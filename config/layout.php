@@ -28,7 +28,8 @@ function page_start($title, $active){
 <meta charset="UTF-8">
 <title><?= htmlspecialchars($title) ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/style.css">
+<!--<link rel="stylesheet" href="../assets/style.css">-->
+<link rel="stylesheet" href="../assets/style_v5.css">
 <link rel="stylesheet" href="../assets/menu_metas_fix.css">
 </head>
 <body>
