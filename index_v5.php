@@ -96,13 +96,48 @@ if ('serviceWorker' in navigator) {
         <h2>Bienvenido de nuevo 👋</h2>
         <p>Aquí tienes el resumen actualizado de tu portafolio.</p>
     </div>
+    <div class="header-right-tools">
 
-    <div class="date-pill">
-        <?= date('d M Y') ?>
+        <div class="header-icon-actions">
+            <a class="header-icon-btn green"
+               href="api/market_data_engine.php?redirect=../index_v5.php"
+               data-tip="Actualizar precios">
+                📈
+            </a>
+
+            <a class="header-icon-btn blue"
+               href="api/save_snapshot.php"
+               data-tip="Guardar snapshot">
+                💾
+            </a>
+
+            <a class="header-icon-btn orange"
+               href="api/generate_notifications.php"
+               data-tip="Escanear alertas">
+                🔔
+            </a>
+
+            <a class="header-icon-btn green"
+               href="api/smart_dividend_engine.php"
+               data-tip="Dividend Engine">
+                💰
+            </a>
+
+            <a class="header-icon-btn purple"
+               href="pages/ai_insights.php"
+               data-tip="AI Insights">
+                ✨
+            </a>
+        </div>
+
+        <div class="dashboard-date-pill">
+            <?= date("d M Y") ?>
+        </div>
+
     </div>
 </section>
 
-<section class="quick-actions-panel">
+<!--<section class="quick-actions-panel">
     <h2>Acciones rápidas</h2>
     <p>Ejecuta funciones principales del sistema con un clic.</p>
 
@@ -139,7 +174,7 @@ if ('serviceWorker' in navigator) {
         </a>
 
     </div>
-</section>
+</section>-->
 <?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
 <section class="cards-grid">
 
