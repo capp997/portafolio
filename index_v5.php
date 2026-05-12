@@ -177,7 +177,7 @@ if ('serviceWorker' in navigator) {
     </div>
 </section>-->
 <?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
-<?php include __DIR__ . "/components/premium_dashboard_widgets.php"; ?>
+
 <section class="cards-grid">
 
     <div class="card premium-glow">
@@ -278,7 +278,7 @@ if ('serviceWorker' in navigator) {
     </div>
 
 </section>
-
+<?php include __DIR__ . "/components/premium_dashboard_widgets.php"; ?>
 <section class="panel">
     <div class="table-header">
         <h2>Resumen por activo</h2>
@@ -376,6 +376,5 @@ new Chart(ctx, {
 </script>
 <script src="assets/pwa.js"></script>
 <script src="assets/menu_dropdown.js"></script>
-<?php include __DIR__ . "/components/mobile_bottom_bar.php"; ?>
 </body>
 </html>
