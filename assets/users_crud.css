@@ -1,0 +1,204 @@
+/* USERS CRUD BUTTONS */
+
+.users-ok,
+.users-error{
+    padding:14px 18px;
+    border-radius:16px;
+    margin-bottom:18px;
+    font-weight:bold;
+}
+
+.users-ok{
+    background:#052e16;
+    border:1px solid #22c55e;
+    color:#86efac;
+}
+
+.users-error{
+    background:#450a0a;
+    border:1px solid #dc2626;
+    color:#fca5a5;
+}
+
+.users-edit-panel{
+    background:linear-gradient(180deg,#0f172a,#0b1220);
+    border:1px solid #26344f;
+    border-radius:26px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.24);
+}
+
+.edit-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.edit-head h2{
+    margin:0 0 6px;
+}
+
+.edit-head p{
+    margin:0;
+    color:#94a3b8;
+}
+
+.edit-head a{
+    background:#111827;
+    border:1px solid #334155;
+    color:white;
+    padding:11px 15px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.edit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.user-form{
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:20px;
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.user-form label{
+    color:#cbd5e1;
+    font-weight:bold;
+}
+
+.user-form input,
+.user-form select{
+    background:#0b1220;
+    border:1px solid #334155;
+    color:white;
+    border-radius:14px;
+    padding:13px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.save-btn,
+.password-btn{
+    border:0;
+    border-radius:14px;
+    padding:14px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.save-btn{
+    background:#16a34a;
+}
+
+.password-btn{
+    background:#2563eb;
+}
+
+.user-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.user-actions form{
+    margin:0;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    border:1px solid #334155;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:16px;
+    background:#020617;
+    color:white;
+}
+
+.icon-btn.edit{
+    background:#1d4ed8;
+}
+
+.icon-btn.enable{
+    background:#15803d;
+}
+
+.icon-btn.disable{
+    background:#92400e;
+}
+
+.icon-btn.delete{
+    background:#991b1b;
+}
+
+.role-pill{
+    display:inline-flex;
+    padding:7px 10px;
+    border-radius:999px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.role-admin{
+    background:#3b0764;
+    color:#d8b4fe;
+}
+
+.role-user{
+    background:#1e293b;
+    color:#cbd5e1;
+}
+
+.status-active,
+.status-inactive{
+    display:inline-flex;
+    padding:7px 10px;
+    border-radius:999px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.status-active{
+    background:#052e16;
+    color:#86efac;
+}
+
+.status-inactive{
+    background:#450a0a;
+    color:#fca5a5;
+}
+
+@media(max-width:900px){
+    .edit-grid,
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .edit-head{
+        flex-direction:column;
+    }
+
+    .user-actions{
+        flex-wrap:wrap;
+    }
+}
