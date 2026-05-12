@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/menu.php";
 require_once __DIR__ . "/../config/auth.php";
 require_once __DIR__ . "/../config/db.php";
 
@@ -31,47 +32,19 @@ function typeClass($type){
 </head>
 
 <body>
+    <div class="layout">
+        <?php render_sidebar('advanced_analytics', '../'); ?>
 
-<div class="layout">
+        <main class="content">
 
-<aside class="sidebar">
-<div>
-<div class="brand">
-<div class="logo">🧠</div>
-<div>
-<h1>AI Insights</h1>
-<p>Intelligence Engine</p>
-</div>
-</div>
-
-<nav class="premium-menu">
-<a href="../index_v5.php">🏠 Dashboard</a>
-<a class="active" href="ai_insights.php">🧠 AI Insights</a>
-<a href="ai_finance_chat.php">💬 AI Chat</a>
-<a href="ai_portfolio_advisor.php">🧠 AI Advisor</a>
-<a href="smart_signals.php">🤖 Smart Signals</a>
-<a href="advanced_analytics.php">📊 Analytics</a>
-<a href="report_center.php">📄 Reportes</a>
-</nav>
-</div>
-
-<div class="sidebar-footer">
-<a href="../api/generate_ai_insights.php">✨ Generar insights</a>
-<a href="../api/logout.php">Cerrar sesión</a>
-</div>
-</aside>
-
-<main class="content">
-
-<section class="insights-hero">
-<div>
-<p>AI Insights Engine</p>
-<h1>Insights inteligentes del portafolio</h1>
-<span>OpenAI analiza tus activos, señales y riesgo para generar ideas prácticas.</span>
-</div>
-
-<a class="hero-btn" href="../api/generate_ai_insights.php">Generar insights</a>
-</section>
+            <section class="insights-hero">
+                <div>
+                    <p>AI Insights Engine</p>
+                    <h1>Insights inteligentes del portafolio</h1>
+                    <span>OpenAI analiza tus activos, señales y riesgo para generar ideas prácticas.</span>
+                </div>
+                    <a class="hero-btn" href="../api/generate_ai_insights.php">Generar insights</a>
+            </section>
 
 <?php if(isset($_GET['generated'])): ?>
 <div class="ok-box">Se generaron <?=intval($_GET['generated'])?> insights correctamente ✅</div>
