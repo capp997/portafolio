@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["user_id"]) && !isset($_GET["debug"])){
+if(isset($_SESSION["user_id"]) && isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
     header("Location: /index_v5.php");
     exit;
 }
@@ -56,6 +56,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     $_SESSION["user_id"] = $user["id"];
                     $_SESSION["username"] = $user["username"] ?? $user["email"];
                     $_SESSION["role"] = $user["role"] ?? "user";
+                    $_SESSION["logged_in"] = true;
 
                     session_write_close();
 
