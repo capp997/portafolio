@@ -59,6 +59,7 @@ function m($n){
 <meta name="theme-color" content="#16a34a">
 <title>Dashboard Premium</title>
 <link rel="stylesheet" href="assets/style_v5.css">
+<link rel="stylesheet" href="assets/ui_power_pack.css">
 <link rel="stylesheet" href="assets/auto_refresh.css">
 <link rel="stylesheet" href="assets/mobile_premium.css">
 <link rel="stylesheet" href="assets/action_buttons.css">
@@ -142,41 +143,13 @@ if ('serviceWorker' in navigator) {
 
 <?php include __DIR__ . "/components/live_market_mini.php"; ?>
 <?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
-<section class="cards-grid">
-
-    <div class="card premium-glow">
-        <span>Valor total</span>
-        <h3><?=m($total)?></h3>
-        <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
-            <?= $pl >= 0 ? '▲' : '▼' ?> <?= number_format($plPercent,2) ?>%
-        </div>
-    </div>
-
-    <div class="card premium-glow">
-        <span>Ganancia / Pérdida</span>
-        <h3 class="<?=$pl>=0?'green':'red'?>"><?=m($pl)?></h3>
-        <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
-            <?= $pl >= 0 ? 'Ganando' : 'Perdiendo' ?>
-        </div>
-    </div>
-
-    <div class="card">
-        <span>ETF / Base</span>
-        <h3><?=m($etf)?></h3>
-        <div class="circle-wrap">
-            <div class="circle"><?=number_format($etfPercent,1)?>%</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <span>Crypto</span>
-        <h3 class="orange"><?=m($crypto)?></h3>
-        <div class="circle-wrap">
-            <div class="circle orange-circle"><?=number_format($cryptoPercent,1)?>%</div>
-        </div>
-    </div>
-
-</section>
+<?php 
+    $totalValue = $portfolioValue ?? 0;
+    $totalPL = $profitLoss ?? 0; 
+    $cryptoValue = $cryptoTotal ?? 0;
+    $etfValue = $etfTotal ?? 0;
+?>
+<?php include __DIR__ . "/components/draggable_widgets.php"; ?>
 
 <section class="middle-grid">
 
@@ -340,5 +313,6 @@ new Chart(ctx, {
 </script>
 <script src="assets/pwa.js"></script>
 <script src="assets/menu_dropdown.js"></script>
+<script src="assets/ui_power_pack.js"></script>
 </body>
 </html>
