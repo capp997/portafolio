@@ -72,6 +72,7 @@ function m($n){
 <link rel="stylesheet" href="assets/dashboard_premium_ui.css">
 <link rel="stylesheet" href="assets/premium_ui_pack.css">
 <link rel="stylesheet" href="assets/live_charts.css">
+<link rel="stylesheet" href="assets/premium_dashboard_grid.css">
 <script src="assets/mobile_premium.js"></script>
 <script src="assets/auto_refresh.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -142,10 +143,10 @@ if ('serviceWorker' in navigator) {
 </section>
 
 <?php include __DIR__ . "/components/live_market_mini.php"; ?>
-<?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
-<section class="cards-grid">
+<?php include __DIR__ . "/components/dashboard_workspace_toolbar.php"; ?>
+<section class="dashboard-widget-grid">
 
-    <div class="card premium-glow">
+    <div class="dashboard-widget widget-size-3">
         <span>Valor total</span>
         <h3><?=m($total)?></h3>
         <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
@@ -153,7 +154,7 @@ if ('serviceWorker' in navigator) {
         </div>
     </div>
 
-    <div class="card premium-glow">
+    <div class="dashboard-widget widget-size-3">
         <span>Ganancia / Pérdida</span>
         <h3 class="<?=$pl>=0?'green':'red'?>"><?=m($pl)?></h3>
         <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
@@ -243,6 +244,7 @@ if ('serviceWorker' in navigator) {
     </div>
 
 </section>
+<?php include __DIR__ . "/components/ai_dashboard_cards_premium.php"; ?>
 <?php include __DIR__ . "/components/premium_dashboard_widgets.php"; ?>
 <section class="panel">
     <div class="table-header">
@@ -342,5 +344,6 @@ new Chart(ctx, {
 <script src="assets/pwa.js"></script>
 <script src="assets/menu_dropdown.js"></script>
 <script src="assets/ui_power_pack.js"></script>
+<script src="assets/premium_dashboard_grid.js"></script>
 </body>
 </html>
