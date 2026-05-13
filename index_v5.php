@@ -144,38 +144,79 @@ if ('serviceWorker' in navigator) {
 
 <?php include __DIR__ . "/components/live_market_mini.php"; ?>
 <?php include __DIR__ . "/components/dashboard_workspace_toolbar.php"; ?>
+<?php include __DIR__ . "/components/dashboard_workspace_toolbar.php"; ?>
+
 <section class="dashboard-widget-grid">
 
-    <div class="dashboard-widget widget-size-3">
-        <span>Valor total</span>
-        <h3><?=m($total)?></h3>
-        <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
-            <?= $pl >= 0 ? '▲' : '▼' ?> <?= number_format($plPercent,2) ?>%
+    <div class="dashboard-widget widget-size-3"
+         data-widget-id="valor-total"
+         data-widget-title="Valor total">
+
+        <div class="card premium-glow">
+            <span>Valor total</span>
+            <h3><?=m($total)?></h3>
+
+            <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
+                <?= $pl >= 0 ? '▲' : '▼' ?> <?= number_format($plPercent,2) ?>%
+            </div>
         </div>
+
     </div>
 
-    <div class="dashboard-widget widget-size-3">
-        <span>Ganancia / Pérdida</span>
-        <h3 class="<?=$pl>=0?'green':'red'?>"><?=m($pl)?></h3>
-        <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
-            <?= $pl >= 0 ? 'Ganando' : 'Perdiendo' ?>
+    <div class="dashboard-widget widget-size-3"
+         data-widget-id="profit-loss"
+         data-widget-title="Ganancia / Pérdida">
+
+        <div class="card premium-glow">
+            <span>Ganancia / Pérdida</span>
+
+            <h3 class="<?=$pl>=0?'green':'red'?>">
+                <?=m($pl)?>
+            </h3>
+
+            <div class="<?= $pl >= 0 ? 'mini-positive' : 'mini-negative' ?>">
+                <?= $pl >= 0 ? 'Ganando' : 'Perdiendo' ?>
+            </div>
         </div>
+
     </div>
 
-    <div class="card">
-        <span>ETF / Base</span>
-        <h3><?=m($etf)?></h3>
-        <div class="circle-wrap">
-            <div class="circle"><?=number_format($etfPercent,1)?>%</div>
+    <div class="dashboard-widget widget-size-3"
+         data-widget-id="etf-base"
+         data-widget-title="ETF / Base">
+
+        <div class="card">
+            <span>ETF / Base</span>
+
+            <h3><?=m($etf)?></h3>
+
+            <div class="circle-wrap">
+                <div class="circle">
+                    <?=number_format($etfPercent,1)?>%
+                </div>
+            </div>
         </div>
+
     </div>
 
-    <div class="card">
-        <span>Crypto</span>
-        <h3 class="orange"><?=m($crypto)?></h3>
-        <div class="circle-wrap">
-            <div class="circle orange-circle"><?=number_format($cryptoPercent,1)?>%</div>
+    <div class="dashboard-widget widget-size-3"
+         data-widget-id="crypto"
+         data-widget-title="Crypto">
+
+        <div class="card">
+            <span>Crypto</span>
+
+            <h3 class="orange">
+                <?=m($crypto)?>
+            </h3>
+
+            <div class="circle-wrap">
+                <div class="circle orange-circle">
+                    <?=number_format($cryptoPercent,1)?>%
+                </div>
+            </div>
         </div>
+
     </div>
 
 </section>
