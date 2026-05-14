@@ -1,0 +1,436 @@
+/* MOBILE RESPONSIVE FULL FIX
+   Cargar DESPUÉS de menu_unified_full.css y dashboard_premium_ui.css
+*/
+
+@media(max-width: 900px){
+
+    html, body{
+        width:100% !important;
+        max-width:100% !important;
+        overflow-x:hidden !important;
+    }
+
+    body{
+        padding-bottom:78px !important;
+    }
+
+    .layout,
+    .layout.app,
+    .app{
+        display:block !important;
+        width:100% !important;
+        min-height:100vh !important;
+        overflow-x:hidden !important;
+    }
+
+    /* Sidebar off-canvas */
+    .sidebar,
+    .layout > .sidebar,
+    .app > .sidebar,
+    .sidebar.unified-sidebar{
+        position:fixed !important;
+        top:0 !important;
+        left:-310px !important;
+        width:290px !important;
+        min-width:290px !important;
+        max-width:290px !important;
+        height:100vh !important;
+        min-height:100vh !important;
+        max-height:100vh !important;
+        z-index:100000 !important;
+        padding:22px 16px !important;
+        overflow-y:auto !important;
+        overflow-x:hidden !important;
+        border-right:1px solid #1e293b !important;
+        border-bottom:0 !important;
+        box-shadow:30px 0 80px rgba(0,0,0,.55) !important;
+        transition:left .25s ease !important;
+        display:flex !important;
+        flex-direction:column !important;
+        justify-content:space-between !important;
+    }
+
+    .sidebar.mobile-open,
+    .layout > .sidebar.mobile-open,
+    .app > .sidebar.mobile-open{
+        left:0 !important;
+    }
+
+    .content,
+    .main,
+    .layout > .content,
+    .app > .content{
+        margin-left:0 !important;
+        width:100% !important;
+        max-width:100% !important;
+        padding:76px 14px 28px !important;
+        overflow-x:hidden !important;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn{
+        display:flex !important;
+        position:fixed !important;
+        top:14px !important;
+        left:14px !important;
+        z-index:100002 !important;
+        width:46px !important;
+        height:46px !important;
+        border-radius:14px !important;
+        border:1px solid #26344f !important;
+        background:#020617 !important;
+        color:white !important;
+        font-size:24px !important;
+        align-items:center !important;
+        justify-content:center !important;
+        box-shadow:0 14px 40px rgba(0,0,0,.45) !important;
+    }
+
+    .mobile-overlay{
+        display:none !important;
+        position:fixed !important;
+        inset:0 !important;
+        background:rgba(0,0,0,.58) !important;
+        backdrop-filter:blur(4px) !important;
+        z-index:99999 !important;
+    }
+
+    .mobile-overlay.show{
+        display:block !important;
+    }
+
+    /* Header/topbar */
+    .topbar,
+    .dashboard-premium-header,
+    .clean-hero,
+    .admin-hero,
+    .audit-hero,
+    .users-hero,
+    .metas-hero,
+    .insights-hero,
+    .charts-hero,
+    .reports-hero,
+    .sell-hero{
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        gap:14px !important;
+        padding:22px !important;
+        border-radius:22px !important;
+    }
+
+    .topbar h2,
+    .dashboard-premium-header h1,
+    .clean-hero h1,
+    .admin-hero h1,
+    .audit-hero h1,
+    .users-hero h1,
+    .metas-hero h1,
+    .insights-hero h1,
+    .charts-hero h1,
+    .reports-hero h1,
+    .sell-hero h1{
+        font-size:30px !important;
+        line-height:1.15 !important;
+    }
+
+    .header-right-tools{
+        width:100% !important;
+        flex-direction:column !important;
+        align-items:stretch !important;
+        gap:12px !important;
+    }
+
+    .header-icon-actions{
+        display:grid !important;
+        grid-template-columns:repeat(5,1fr) !important;
+        gap:8px !important;
+        width:100% !important;
+    }
+
+    .header-icon-btn{
+        width:100% !important;
+        min-width:0 !important;
+    }
+
+    .dashboard-date-pill,
+    .date-pill{
+        width:100% !important;
+        text-align:center !important;
+    }
+
+    /* Generic grids */
+    .cards-grid,
+    .cards,
+    .analytics-cards,
+    .admin-kpis,
+    .audit-cards,
+    .reports-stats,
+    .reports-grid,
+    .insights-grid,
+    .signals-grid,
+    .sell-grid,
+    .metas-grid,
+    .clean-grid,
+    .clean-bottom-grid,
+    .market-widgets-grid,
+    .premium-widgets,
+    .admin-grid,
+    .charts-layout,
+    .middle-grid,
+    .grid,
+    .grid2,
+    .charts-grid,
+    .asset-summary-grid,
+    .preview-kpis,
+    .preview-bottom{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:14px !important;
+        width:100% !important;
+    }
+
+    .card,
+    .panel,
+    .admin-panel,
+    .audit-filter,
+    .users-edit-panel,
+    .meta-card,
+    .metas-form-panel,
+    .premium-widget,
+    .clean-chart-card,
+    .clean-watchlist,
+    .clean-info-card,
+    .chart-panel,
+    .watchlist-panel,
+    .market-widget-card,
+    .report-card,
+    .sell-panel,
+    .insight-card,
+    .signal-card{
+        width:100% !important;
+        max-width:100% !important;
+        border-radius:20px !important;
+        padding:18px !important;
+        overflow:hidden !important;
+    }
+
+    .card h3,
+    .card strong,
+    .admin-kpi h2,
+    .audit-cards h2,
+    .reports-stats h2{
+        font-size:28px !important;
+        word-break:break-word !important;
+    }
+
+    /* Charts */
+    .chart-wrap{
+        width:230px !important;
+        height:230px !important;
+        max-width:100% !important;
+        margin:auto !important;
+    }
+
+    .chart-frame,
+    .chart-wrapper,
+    .tv-chart-box{
+        height:420px !important;
+        min-height:420px !important;
+        max-width:100% !important;
+    }
+
+    #tradingview_chart{
+        height:100% !important;
+        min-height:420px !important;
+    }
+
+    /* Forms */
+    .metas-add-form,
+    .meta-edit-form,
+    .sell-form,
+    .form-row,
+    .edit-grid,
+    .goal-add-form,
+    .goal-money-grid,
+    .goal-edit-grid,
+    .goal-grid,
+    .goals-wrapper,
+    .audit-filter form,
+    .workspaces-toolbar,
+    .workspace-left,
+    .workspace-actions-db,
+    .dashboard-workspace-toolbar,
+    .workspace-actions{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+        width:100% !important;
+    }
+
+    input,
+    select,
+    textarea,
+    button{
+        max-width:100% !important;
+    }
+
+    .metas-add-form button,
+    .meta-edit-form button,
+    .sell-form button,
+    .audit-filter button,
+    .audit-filter a,
+    .workspace-actions button,
+    .workspace-actions-db button,
+    .users-hero a,
+    .admin-hero-actions a,
+    .reports-main-btn,
+    .hero-btn,
+    .charts-btn,
+    .clean-hero a{
+        width:100% !important;
+        text-align:center !important;
+        justify-content:center !important;
+    }
+
+    /* Tables */
+    .table-wrap{
+        width:100% !important;
+        overflow-x:auto !important;
+        -webkit-overflow-scrolling:touch !important;
+        border-radius:18px !important;
+        border:1px solid #1e293b !important;
+    }
+
+    table{
+        min-width:760px !important;
+    }
+
+    th, td{
+        padding:12px 10px !important;
+        font-size:13px !important;
+        white-space:nowrap !important;
+    }
+
+    /* Menu items in sidebar */
+    .premium-menu a,
+    .sidebar nav a,
+    .menu-parent{
+        min-height:44px !important;
+        padding:11px 13px !important;
+        font-size:14px !important;
+    }
+
+    .submenu{
+        margin-left:14px !important;
+        padding-left:8px !important;
+    }
+
+    /* Workspace and dashboard widgets */
+    .dashboard-widget-grid{
+        grid-template-columns:1fr !important;
+    }
+
+    .dashboard-widget,
+    .dashboard-widget.widget-size-3,
+    .dashboard-widget.widget-size-4,
+    .dashboard-widget.widget-size-6,
+    .dashboard-widget.widget-size-8,
+    .dashboard-widget.widget-size-12{
+        grid-column:span 1 !important;
+    }
+
+    .widget-tools{
+        opacity:1 !important;
+    }
+
+    /* Live chart special */
+    .market-cards{
+        grid-template-columns:1fr !important;
+    }
+
+    .market-card{
+        grid-template-columns:1fr !important;
+    }
+
+    .main-grid{
+        grid-template-columns:1fr !important;
+    }
+
+    .selected-card{
+        grid-template-columns:1fr !important;
+    }
+
+    .selected-stats{
+        grid-template-columns:1fr !important;
+    }
+
+    /* Bottom nav */
+    .mobile-bottom-nav{
+        position:fixed !important;
+        bottom:0 !important;
+        left:0 !important;
+        right:0 !important;
+        z-index:99990 !important;
+        height:64px !important;
+        background:#020617 !important;
+        border-top:1px solid #1e293b !important;
+        display:grid !important;
+        grid-template-columns:repeat(4,1fr) !important;
+        box-shadow:0 -10px 40px rgba(0,0,0,.4) !important;
+    }
+
+    .mobile-bottom-nav a{
+        color:#94a3b8 !important;
+        text-decoration:none !important;
+        font-size:11px !important;
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:center !important;
+        gap:4px !important;
+        font-weight:bold !important;
+    }
+
+    .mobile-bottom-nav a span{
+        font-size:19px !important;
+    }
+
+    .mobile-bottom-nav a.active-mobile{
+        color:#22c55e !important;
+    }
+}
+
+/* Extra small */
+@media(max-width:480px){
+    .content,
+    .main{
+        padding-left:10px !important;
+        padding-right:10px !important;
+    }
+
+    .topbar h2,
+    .dashboard-premium-header h1,
+    .clean-hero h1,
+    .admin-hero h1,
+    .audit-hero h1,
+    .users-hero h1,
+    .metas-hero h1,
+    .insights-hero h1{
+        font-size:26px !important;
+    }
+
+    .header-icon-actions{
+        grid-template-columns:repeat(3,1fr) !important;
+    }
+
+    .chart-frame,
+    .chart-wrapper,
+    .tv-chart-box{
+        height:360px !important;
+        min-height:360px !important;
+    }
+
+    #tradingview_chart{
+        min-height:360px !important;
+    }
+}

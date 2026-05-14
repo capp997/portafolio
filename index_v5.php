@@ -344,5 +344,7 @@ new Chart(ctx, {
 <script src="assets/menu_dropdown.js"></script>
 <script src="assets/ui_power_pack.js"></script>
 <script src="assets/premium_dashboard_grid.js"></script>
+<link rel="stylesheet" href="assets/mobile_responsive_full_fix.css">
+<script src="assets/mobile_responsive_full_fix.js"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@ function page_start($title, $active){
 <link rel="stylesheet" href="../assets/premium_ui_pack.css">
 <link rel="stylesheet" href="../assets/global_page_fix.css">
 <link rel="stylesheet" href="../assets/menu_unified_full.css">
+<link rel="stylesheet" href="../assets/mobile_responsive_full_fix.css">
 </head>
 <body>
 <div class="layout app">
@@ -30,6 +31,7 @@ function page_end(){
 </main>
 </div>
 <script src="../assets/menu_dropdown.js"></script>
+<script src="../assets/mobile_responsive_full_fix.js"></script>
 </body>
 </html>
 <?php } ?>
