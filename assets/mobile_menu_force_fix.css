@@ -1,0 +1,87 @@
+/* MOBILE MENU BUTTON FORCE FIX */
+
+.mobile-menu-btn{
+    display:none;
+}
+
+.mobile-overlay{
+    display:none;
+}
+
+@media(max-width:900px){
+
+    .mobile-menu-btn{
+        display:flex !important;
+        position:fixed !important;
+        top:14px !important;
+        left:14px !important;
+        z-index:2147483647 !important;
+        width:48px !important;
+        height:48px !important;
+        border-radius:15px !important;
+        border:1px solid #334155 !important;
+        background:#020617 !important;
+        color:white !important;
+        font-size:25px !important;
+        align-items:center !important;
+        justify-content:center !important;
+        cursor:pointer !important;
+        box-shadow:0 16px 45px rgba(0,0,0,.55) !important;
+    }
+
+    .mobile-overlay{
+        display:none !important;
+        position:fixed !important;
+        inset:0 !important;
+        z-index:2147483645 !important;
+        background:rgba(0,0,0,.62) !important;
+        backdrop-filter:blur(4px) !important;
+    }
+
+    .mobile-overlay.show{
+        display:block !important;
+    }
+
+    body.mobile-menu-open{
+        overflow:hidden !important;
+    }
+
+    body.mobile-menu-open .sidebar,
+    body.mobile-menu-open aside.sidebar,
+    body.mobile-menu-open .layout .sidebar,
+    body.mobile-menu-open .app .sidebar{
+        left:0 !important;
+        transform:translateX(0) !important;
+        visibility:visible !important;
+        opacity:1 !important;
+    }
+
+    .sidebar,
+    aside.sidebar,
+    .layout .sidebar,
+    .app .sidebar{
+        position:fixed !important;
+        top:0 !important;
+        left:-320px !important;
+        transform:translateX(0) !important;
+        width:290px !important;
+        min-width:290px !important;
+        max-width:290px !important;
+        height:100vh !important;
+        min-height:100vh !important;
+        max-height:100vh !important;
+        z-index:2147483646 !important;
+        overflow-y:auto !important;
+        overflow-x:hidden !important;
+        transition:left .25s ease !important;
+        display:flex !important;
+        flex-direction:column !important;
+        background:#050816 !important;
+        box-shadow:35px 0 90px rgba(0,0,0,.62) !important;
+    }
+
+    .content,
+    .main{
+        margin-left:0 !important;
+    }
+}
